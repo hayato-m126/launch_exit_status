@@ -41,7 +41,7 @@ echo $?
 ```bash
 cd $HOME/ros_ws/awf
 source install/setup.bash
-ros2 launch launch_exit_status multi_shutdown_with_autoware.launch.py
+ros2 launch launch_exit_status multi_shutdown_with_autoware.launch.py map_path:=$HOME/map/sample vehicle_model:=sample_vehicle sensor_model:=sample_sensor_kit
 echo $?
 ```
 
