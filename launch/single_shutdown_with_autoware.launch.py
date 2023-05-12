@@ -42,7 +42,7 @@ def generate_launch_description():
             name="listener",
             output="screen",
             arguments=["--number_of_cycles", "1000"],
-            on_exit=launch.actions.Shutdown()
+            # on_exit=launch.actions.Shutdown() # do not call lisnterner Shutdown
         ),
         autoware_launch,
     ])
