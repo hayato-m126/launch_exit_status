@@ -1,0 +1,917 @@
+❯ ros2 launch launch_exit_status single_shutdown_with_autoware.launch.py map_path:=$HOME/map/sample vehicle_model:=sample_vehicle sensor_model:=sample_sensor_kit perception:=false planning:=false
+[INFO] [launch]: All log files can be found below /home/hyt/.ros/log/2023-05-12-17-10-13-626092-dpc1909014-2204-374052
+[INFO] [launch]: Default logging verbosity is set to INFO
+1683879026.452730 [77]       ros2: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/sensing/lidar/right/velodyne_convert_node' in container 'pointcloud_container'
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/map/lanelet2_map_loader' in container '/map/map_container'
+[INFO] [talker_qos-1]: process started with pid [374079]
+[INFO] [listener_qos-2]: process started with pid [374081]
+[INFO] [component_container_mt-3]: process started with pid [374083]
+[INFO] [robot_state_publisher-4]: process started with pid [374085]
+[INFO] [service_log_checker-5]: process started with pid [374087]
+[INFO] [component_container-6]: process started with pid [374089]
+[INFO] [topic_state_monitor_node-7]: process started with pid [374091]
+[INFO] [topic_state_monitor_node-8]: process started with pid [374093]
+[INFO] [topic_state_monitor_node-9]: process started with pid [374095]
+[INFO] [topic_state_monitor_node-10]: process started with pid [374097]
+[INFO] [topic_state_monitor_node-11]: process started with pid [374099]
+[INFO] [topic_state_monitor_node-12]: process started with pid [374101]
+[INFO] [topic_state_monitor_node-13]: process started with pid [374103]
+[INFO] [topic_state_monitor_node-14]: process started with pid [374105]
+[INFO] [topic_state_monitor_node-15]: process started with pid [374230]
+[INFO] [topic_state_monitor_node-16]: process started with pid [374232]
+[INFO] [topic_state_monitor_node-17]: process started with pid [374234]
+[INFO] [topic_state_monitor_node-18]: process started with pid [374236]
+[INFO] [topic_state_monitor_node-19]: process started with pid [374238]
+[INFO] [topic_state_monitor_node-20]: process started with pid [374240]
+[INFO] [aggregator_node-21]: process started with pid [374242]
+[INFO] [system_error_monitor-22]: process started with pid [374244]
+[INFO] [emergency_handler-23]: process started with pid [374246]
+[INFO] [component_container-24]: process started with pid [374248]
+[INFO] [component_container-25]: process started with pid [374250]
+[INFO] [component_container-26]: process started with pid [374252]
+[INFO] [map_hash_generator-27]: process started with pid [374254]
+[INFO] [imu_corrector-28]: process started with pid [374256]
+[INFO] [gnss_poser-29]: process started with pid [374260]
+[INFO] [vehicle_velocity_converter-30]: process started with pid [374331]
+[INFO] [pose_initializer_node-31]: process started with pid [374342]
+[INFO] [automatic_pose_initializer-32]: process started with pid [374382]
+[INFO] [ndt_scan_matcher-33]: process started with pid [374397]
+[INFO] [gyro_odometer-34]: process started with pid [374432]
+[INFO] [ekf_localizer-35]: process started with pid [374467]
+[INFO] [stop_filter-36]: process started with pid [374518]
+[INFO] [twist2accel-37]: process started with pid [374520]
+[INFO] [localization_error_monitor-38]: process started with pid [374522]
+[INFO] [component_container-39]: process started with pid [374531]
+[INFO] [component_container_mt-40]: process started with pid [374533]
+[INFO] [web_server.py-41]: process started with pid [374535]
+[INFO] [initial_pose_adaptor-42]: process started with pid [374569]
+[INFO] [routing_adaptor-43]: process started with pid [374587]
+[INFO] [component_container_mt-44]: process started with pid [374597]
+[INFO] [rviz2-45]: process started with pid [374609]
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/system/component_state_monitor/component' in container '/system/component_state_monitor/container'
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/map/lanelet2_map_visualization' in container '/map/map_container'
+[listener_qos-2] 1683879030.015466 [77] listener_q: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[component_container_mt-3] 1683879029.741775 [77] component_: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[component_container_mt-3] [INFO] [1683879029.779856270] [pointcloud_container]: Load Library: /home/hyt/ros_ws/awf/install/velodyne_pointcloud/lib/libcloud_nodelet.so
+[component_container_mt-3] [INFO] [1683879029.786687252] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<velodyne_pointcloud::Convert>
+[component_container_mt-3] [INFO] [1683879029.786726787] [pointcloud_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<velodyne_pointcloud::Convert>
+[component_container_mt-3] [INFO] [1683879029.796640848] [sensing.lidar.right.velodyne_convert_node]: This node is only tested for VLP16, VLP32C, and VLS128. Use other models at your own risk.
+[component_container_mt-3] [INFO] [1683879029.798186077] [sensing.lidar.right.velodyne_convert_node]: correction angles: /home/hyt/ros_ws/awf/install/velodyne_pointcloud/share/velodyne_pointcloud/params/VLP16db.yaml
+[component_container_mt-3] [INFO] [1683879029.798235175] [sensing.lidar.right.velodyne_convert_node]: correction angles: /home/hyt/ros_ws/awf/install/velodyne_pointcloud/share/velodyne_pointcloud/params/VLP16db.yaml
+[component_container_mt-3] [INFO] [1683879029.799878022] [calibration]: laser_ring[ 0] =  0, angle = -0.261799
+[component_container_mt-3] [INFO] [1683879029.799895311] [calibration]: laser_ring[ 2] =  1, angle = -0.226893
+[component_container_mt-3] [INFO] [1683879029.799899715] [calibration]: laser_ring[ 4] =  2, angle = -0.191986
+[component_container_mt-3] [INFO] [1683879029.799903045] [calibration]: laser_ring[ 6] =  3, angle = -0.157080
+[component_container_mt-3] [INFO] [1683879029.799906312] [calibration]: laser_ring[ 8] =  4, angle = -0.122173
+[component_container_mt-3] [INFO] [1683879029.799909730] [calibration]: laser_ring[10] =  5, angle = -0.087266
+[component_container_mt-3] [INFO] [1683879029.799913306] [calibration]: laser_ring[12] =  6, angle = -0.052360
+[component_container_mt-3] [INFO] [1683879029.799916867] [calibration]: laser_ring[14] =  7, angle = -0.017453
+[component_container_mt-3] [INFO] [1683879029.799920281] [calibration]: laser_ring[ 1] =  8, angle = +0.017453
+[component_container_mt-3] [INFO] [1683879029.799923879] [calibration]: laser_ring[ 3] =  9, angle = +0.052360
+[component_container_mt-3] [INFO] [1683879029.799927438] [calibration]: laser_ring[ 5] = 10, angle = +0.087266
+[component_container_mt-3] [INFO] [1683879029.799930937] [calibration]: laser_ring[ 7] = 11, angle = +0.122173
+[component_container_mt-3] [INFO] [1683879029.799934500] [calibration]: laser_ring[ 9] = 12, angle = +0.157080
+[component_container_mt-3] [INFO] [1683879029.799938072] [calibration]: laser_ring[11] = 13, angle = +0.191986
+[component_container_mt-3] [INFO] [1683879029.799941633] [calibration]: laser_ring[13] = 14, angle = +0.226893
+[component_container_mt-3] [INFO] [1683879029.799944746] [calibration]: laser_ring[15] = 15, angle = +0.261799
+[component_container_mt-3] [INFO] [1683879029.800022952] [sensing.lidar.right.velodyne_convert_node]: Number of lasers: 16.
+[component_container_mt-3] [INFO] [1683879029.811156374] [pointcloud_container]: Load Library: /home/hyt/ros_ws/awf/install/pointcloud_preprocessor/lib/libpointcloud_preprocessor_filter.so
+[robot_state_publisher-4] 1683879029.752716 [77] robot_stat: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[robot_state_publisher-4] [INFO] [1683879029.771081766] [robot_state_publisher]: got segment base_link
+[robot_state_publisher-4] [INFO] [1683879029.771176680] [robot_state_publisher]: got segment camera0/camera_link
+[robot_state_publisher-4] [INFO] [1683879029.771189258] [robot_state_publisher]: got segment camera0/camera_optical_link
+[robot_state_publisher-4] [INFO] [1683879029.771197630] [robot_state_publisher]: got segment camera1/camera_link
+[robot_state_publisher-4] [INFO] [1683879029.771205137] [robot_state_publisher]: got segment camera1/camera_optical_link
+[robot_state_publisher-4] [INFO] [1683879029.771212719] [robot_state_publisher]: got segment camera2/camera_link
+[robot_state_publisher-4] [INFO] [1683879029.771220241] [robot_state_publisher]: got segment camera2/camera_optical_link
+[robot_state_publisher-4] [INFO] [1683879029.771227899] [robot_state_publisher]: got segment camera3/camera_link
+[robot_state_publisher-4] [INFO] [1683879029.771235628] [robot_state_publisher]: got segment camera3/camera_optical_link
+[robot_state_publisher-4] [INFO] [1683879029.771243218] [robot_state_publisher]: got segment camera4/camera_link
+[robot_state_publisher-4] [INFO] [1683879029.771250600] [robot_state_publisher]: got segment camera4/camera_optical_link
+[robot_state_publisher-4] [INFO] [1683879029.771258211] [robot_state_publisher]: got segment camera5/camera_link
+[robot_state_publisher-4] [INFO] [1683879029.771265903] [robot_state_publisher]: got segment camera5/camera_optical_link
+[robot_state_publisher-4] [INFO] [1683879029.771273438] [robot_state_publisher]: got segment gnss_link
+[robot_state_publisher-4] [INFO] [1683879029.771280923] [robot_state_publisher]: got segment sensor_kit_base_link
+[robot_state_publisher-4] [INFO] [1683879029.771288577] [robot_state_publisher]: got segment tamagawa/imu_link
+[robot_state_publisher-4] [INFO] [1683879029.771295961] [robot_state_publisher]: got segment traffic_light_left_camera/camera_link
+[robot_state_publisher-4] [INFO] [1683879029.771317245] [robot_state_publisher]: got segment traffic_light_left_camera/camera_optical_link
+[robot_state_publisher-4] [INFO] [1683879029.771325724] [robot_state_publisher]: got segment traffic_light_right_camera/camera_link
+[robot_state_publisher-4] [INFO] [1683879029.771333415] [robot_state_publisher]: got segment traffic_light_right_camera/camera_optical_link
+[robot_state_publisher-4] [INFO] [1683879029.771340760] [robot_state_publisher]: got segment velodyne_left
+[robot_state_publisher-4] [INFO] [1683879029.771348077] [robot_state_publisher]: got segment velodyne_left_base_link
+[robot_state_publisher-4] [INFO] [1683879029.771355552] [robot_state_publisher]: got segment velodyne_rear
+[robot_state_publisher-4] [INFO] [1683879029.771375651] [robot_state_publisher]: got segment velodyne_rear_base_link
+[robot_state_publisher-4] [INFO] [1683879029.771384560] [robot_state_publisher]: got segment velodyne_right
+[robot_state_publisher-4] [INFO] [1683879029.771392193] [robot_state_publisher]: got segment velodyne_right_base_link
+[robot_state_publisher-4] [INFO] [1683879029.771399588] [robot_state_publisher]: got segment velodyne_top
+[robot_state_publisher-4] [INFO] [1683879029.771407137] [robot_state_publisher]: got segment velodyne_top_base_link
+[service_log_checker-5] 1683879029.747323 [77] service_lo: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[component_container-6] 1683879029.747904 [77] component_: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[component_container-6] [INFO] [1683879029.998684210] [system.component_state_monitor.container]: Load Library: /home/hyt/ros_ws/awf/install/component_state_monitor/lib/libcomponent_state_monitor.so
+[component_container-6] [INFO] [1683879030.000091992] [system.component_state_monitor.container]: Found class: rclcpp_components::NodeFactoryTemplate<component_state_monitor::StateMonitor>
+[component_container-6] [INFO] [1683879030.000127100] [system.component_state_monitor.container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<component_state_monitor::StateMonitor>
+[topic_state_monitor_node-7] 1683879029.750489 [77] topic_stat: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[topic_state_monitor_node-8] 1683879029.750491 [77] topic_stat: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[topic_state_monitor_node-9] 1683879029.750489 [77] topic_stat: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[topic_state_monitor_node-10] 1683879029.752085 [77] topic_stat: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[topic_state_monitor_node-11] 1683879029.752086 [77] topic_stat: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[topic_state_monitor_node-12] 1683879029.753238 [77] topic_stat: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[topic_state_monitor_node-13] 1683879029.752493 [77] topic_stat: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[topic_state_monitor_node-14] 1683879029.754947 [77] topic_stat: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[topic_state_monitor_node-15] 1683879029.800276 [77] topic_stat: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[topic_state_monitor_node-16] 1683879029.805477 [77] topic_stat: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[topic_state_monitor_node-17] 1683879029.801337 [77] topic_stat: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[topic_state_monitor_node-18] 1683879029.798852 [77] topic_stat: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[topic_state_monitor_node-19] 1683879029.805477 [77] topic_stat: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[topic_state_monitor_node-20] 1683879029.825827 [77] topic_stat: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[aggregator_node-21] 1683879029.813297 [77] aggregator: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[system_error_monitor-22] 1683879029.806344 [77] system_err: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[emergency_handler-23] 1683879029.813941 [77] emergency_: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[component_container-24] 1683879029.808160 [77] component_: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[component_container-24] [INFO] [1683879030.058238558] [system.mrm_comfortable_stop_operator.mrm_comfortable_stop_operator_container]: Load Library: /home/hyt/ros_ws/awf/install/mrm_comfortable_stop_operator/lib/libmrm_comfortable_stop_operator_component.so
+[component_container-24] [INFO] [1683879030.059212018] [system.mrm_comfortable_stop_operator.mrm_comfortable_stop_operator_container]: Found class: rclcpp_components::NodeFactoryTemplate<mrm_comfortable_stop_operator::MrmComfortableStopOperator>
+[component_container-24] [INFO] [1683879030.059241533] [system.mrm_comfortable_stop_operator.mrm_comfortable_stop_operator_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<mrm_comfortable_stop_operator::MrmComfortableStopOperator>
+[component_container-25] 1683879029.807358 [77] component_: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[component_container-26] 1683879029.818896 [77] component_: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[component_container-26] [INFO] [1683879029.891814087] [map.map_container]: Load Library: /home/hyt/ros_ws/awf/install/map_loader/lib/liblanelet2_map_loader_node.so
+[component_container-26] [INFO] [1683879029.903354632] [map.map_container]: Found class: rclcpp_components::NodeFactoryTemplate<Lanelet2MapLoaderNode>
+[component_container-26] [INFO] [1683879029.903409842] [map.map_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<Lanelet2MapLoaderNode>
+[component_container-26] [INFO] [1683879030.015312521] [map.map_container]: Load Library: /home/hyt/ros_ws/awf/install/map_loader/lib/liblanelet2_map_visualization_node.so
+[component_container-26] [INFO] [1683879030.016607040] [map.map_container]: Found class: rclcpp_components::NodeFactoryTemplate<Lanelet2MapVisualizationNode>
+[component_container-26] [INFO] [1683879030.016640967] [map.map_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<Lanelet2MapVisualizationNode>
+[imu_corrector-28] 1683879029.821607 [77] imu_correc: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[gnss_poser-29] 1683879029.836966 [77] gnss_poser: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[vehicle_velocity_converter-30] 1683879029.859464 [77] vehicle_ve: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[pose_initializer_node-31] 1683879029.874931 [77] pose_initi: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[automatic_pose_initializer-32] 1683879029.869581 [77] automatic_: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[ndt_scan_matcher-33] 1683879029.922662 [77] ndt_scan_m: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[ndt_scan_matcher-33] [INFO] [1683879029.934665911] [localization.pose_estimator.ndt_scan_matcher]: points_queue_size: 1
+[ndt_scan_matcher-33] [INFO] [1683879029.934814622] [localization.pose_estimator.ndt_scan_matcher]: base_frame_id: base_link
+[ndt_scan_matcher-33] [INFO] [1683879029.934841344] [localization.pose_estimator.ndt_scan_matcher]: ndt_base_frame_id: ndt_base_link
+[ndt_scan_matcher-33] [INFO] [1683879029.934927239] [localization.pose_estimator.ndt_scan_matcher]: trans_epsilon: 0.010000, step_size: 0.100000, resolution: 2.000000, max_iterations: 30
+[gyro_odometer-34] 1683879029.935242 [77] gyro_odome: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[ekf_localizer-35] 1683879029.951971 [77] ekf_locali: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/system/mrm_emergency_stop_operator' in container '/system/mrm_emergency_stop_operator/mrm_emergency_stop_operator_container'
+[stop_filter-36] 1683879029.995252 [77] stop_filte: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[twist2accel-37] 1683879029.989793 [77] twist2acce: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/system/mrm_comfortable_stop_operator' in container '/system/mrm_comfortable_stop_operator/mrm_comfortable_stop_operator_container'
+[localization_error_monitor-38] 1683879029.992215 [77] localizati: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[component_container-39] 1683879030.014081 [77] component_: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[component_container_mt-40] 1683879030.020044 [77] component_: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[initial_pose_adaptor-42] 1683879030.079992 [77] initial_po: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[talker_qos-1] 1683879030.081368 [77] talker_qos: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[component_container-25] [INFO] [1683879030.082572718] [system.mrm_emergency_stop_operator.mrm_emergency_stop_operator_container]: Load Library: /home/hyt/ros_ws/awf/install/mrm_emergency_stop_operator/lib/libmrm_emergency_stop_operator_component.so
+[component_container-25] [INFO] [1683879030.088001613] [system.mrm_emergency_stop_operator.mrm_emergency_stop_operator_container]: Found class: rclcpp_components::NodeFactoryTemplate<mrm_emergency_stop_operator::MrmEmergencyStopOperator>
+[component_container-25] [INFO] [1683879030.088037986] [system.mrm_emergency_stop_operator.mrm_emergency_stop_operator_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<mrm_emergency_stop_operator::MrmEmergencyStopOperator>
+[component_container_mt-44] 1683879030.090884 [77] component_: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[component_container-26] [INFO] [1683879030.113386859] [map.lanelet2_map_visualization]: Map is loaded
+[component_container-26]
+[component_container-26] [ERROR] [1683879030.114421764] [lanelet2_extension.visualization]: lineStringToPolygon: linestring327 must have more than different 3 points! (size is 2)
+[component_container-26] Failed to convert to polygon.
+[component_container-26] [ERROR] [1683879030.114438729] [lanelet2_extension.visualization]: pedestrian marking 327 failed conversion.
+[component_container-26] [ERROR] [1683879030.114463203] [lanelet2_extension.visualization]: lineStringToPolygon: linestring325 must have more than different 3 points! (size is 2)
+[component_container-26] Failed to convert to polygon.
+[component_container-26] [ERROR] [1683879030.114469791] [lanelet2_extension.visualization]: pedestrian marking 325 failed conversion.
+[component_container-26] [ERROR] [1683879030.114485047] [lanelet2_extension.visualization]: lineStringToPolygon: linestring326 must have more than different 3 points! (size is 2)
+[component_container-26] Failed to convert to polygon.
+[component_container-26] [ERROR] [1683879030.114491007] [lanelet2_extension.visualization]: pedestrian marking 326 failed conversion.
+[component_container-26] [ERROR] [1683879030.114495537] [lanelet2_extension.visualization]: lineStringToPolygon: linestring328 must have more than different 3 points! (size is 2)
+[component_container-26] Failed to convert to polygon.
+[component_container-26] [ERROR] [1683879030.114500017] [lanelet2_extension.visualization]: pedestrian marking 328 failed conversion.
+[component_container-26] [ERROR] [1683879030.114504258] [lanelet2_extension.visualization]: lineStringToPolygon: linestring329 must have more than different 3 points! (size is 2)
+[component_container-26] Failed to convert to polygon.
+[component_container-26] [ERROR] [1683879030.114508461] [lanelet2_extension.visualization]: pedestrian marking 329 failed conversion.
+[component_container-26] [ERROR] [1683879030.114512945] [lanelet2_extension.visualization]: lineStringToPolygon: linestring330 must have more than different 3 points! (size is 2)
+[component_container-26] Failed to convert to polygon.
+[component_container-26] [ERROR] [1683879030.114517019] [lanelet2_extension.visualization]: pedestrian marking 330 failed conversion.
+[component_container-26] [ERROR] [1683879030.114521447] [lanelet2_extension.visualization]: lineStringToPolygon: linestring331 must have more than different 3 points! (size is 2)
+[component_container-26] Failed to convert to polygon.
+[component_container-26] [ERROR] [1683879030.114525900] [lanelet2_extension.visualization]: pedestrian marking 331 failed conversion.
+[component_container-26] [ERROR] [1683879030.114530604] [lanelet2_extension.visualization]: lineStringToPolygon: linestring332 must have more than different 3 points! (size is 2)
+[component_container-26] Failed to convert to polygon.
+[component_container-26] [ERROR] [1683879030.114535214] [lanelet2_extension.visualization]: pedestrian marking 332 failed conversion.
+[component_container-26] [INFO] [1683879030.136423017] [map.map_container]: Load Library: /home/hyt/ros_ws/awf/install/map_loader/lib/libpointcloud_map_loader_node.so
+[routing_adaptor-43] 1683879030.141372 [77] routing_ad: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[listener_qos-2] [INFO] [1683879030.170742681] [listener]: Best effort listener
+[talker_qos-1] [INFO] [1683879030.203240849] [talker]: Best effort talker
+[component_container-26] [INFO] [1683879030.209163255] [map.map_container]: Found class: rclcpp_components::NodeFactoryTemplate<PointCloudMapLoaderNode>
+[component_container-26] [INFO] [1683879030.209210633] [map.map_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<PointCloudMapLoaderNode>
+[component_container-39] [INFO] [1683879030.213093133] [control.control_container]: Load Library: /home/hyt/ros_ws/awf/install/trajectory_follower_node/lib/libcontroller_node.so
+[component_container-26] [INFO] [1683879030.239317489] [map.pointcloud_map_loader]: Load /home/hyt/map/sample/pointcloud_map.pcd (1 out of 1)
+[component_container-39] [INFO] [1683879030.240301771] [control.control_container]: Found class: rclcpp_components::NodeFactoryTemplate<autoware::motion::control::trajectory_follower_node::Controller>
+[component_container-39] [INFO] [1683879030.240336464] [control.control_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<autoware::motion::control::trajectory_follower_node::Controller>
+[component_container_mt-3] [INFO] [1683879030.251194587] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::ApproximateDownsampleFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.252452981] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::BlockageDiagComponent>
+[component_container_mt-3] [INFO] [1683879030.253392065] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::CropBoxFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.254135059] [pointcloud_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::CropBoxFilterComponent>
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/default_ad_api/node/autoware_state' in container '/default_ad_api/container'
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/default_ad_api/node/fail_safe' in container '/default_ad_api/container'
+[component_container_mt-3] [INFO] [1683879030.309731098] [sensing.lidar.right.crop_box_filter_self]: Filter (as Component) successfully created with the following parameters:
+[component_container_mt-3]  - approximate_sync : false
+[component_container_mt-3]  - use_indices      : false
+[component_container_mt-3]  - latched_indices  : false
+[component_container_mt-3]  - max_queue_size   : 5
+[component_container-26] [INFO] [1683879030.333656721] [map.pointcloud_map_loader]: Create PCD metadata, as the pointcloud is a single file.
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/default_ad_api/node/interface' in container '/default_ad_api/container'
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/sensing/lidar/right/crop_box_filter_self' in container 'pointcloud_container'
+[component_container_mt-3] [INFO] [1683879030.344643514] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::ApproximateDownsampleFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.344692701] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::BlockageDiagComponent>
+[component_container_mt-3] [INFO] [1683879030.344704165] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::CropBoxFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.344712452] [pointcloud_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::CropBoxFilterComponent>
+[rviz2-45] 1683879030.363122 [77]      rviz2: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[component_container_mt-3] [INFO] [1683879030.388189494] [localization.util.crop_box_filter_measurement_range]: Filter (as Component) successfully created with the following parameters:
+[component_container_mt-3]  - approximate_sync : false
+[component_container_mt-3]  - use_indices      : false
+[component_container_mt-3]  - latched_indices  : false
+[component_container_mt-3]  - max_queue_size   : 5
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/default_ad_api/node/localization' in container '/default_ad_api/container'
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/autoware_api/external/rtc_controller/node' in container '/autoware_api/external/rtc_controller/container'
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/map/pointcloud_map_loader' in container '/map/map_container'
+[component_container-26] [INFO] [1683879030.413288316] [map.map_container]: Load Library: /home/hyt/ros_ws/awf/install/map_tf_generator/lib/libvector_map_tf_generator_node.so
+[component_container-26] [INFO] [1683879030.417498180] [map.map_container]: Found class: rclcpp_components::NodeFactoryTemplate<VectorMapTFGeneratorNode>
+[component_container-26] [INFO] [1683879030.417560998] [map.map_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<VectorMapTFGeneratorNode>
+[component_container_mt-3] [INFO] [1683879030.417766508] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<velodyne_pointcloud::Convert>
+[component_container_mt-3] [INFO] [1683879030.417795692] [pointcloud_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<velodyne_pointcloud::Convert>
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/localization/util/crop_box_filter_measurement_range' in container 'pointcloud_container'
+[aggregator_node-21] [WARN] [1683879030.436826151] [Aggregator]: No timestamp set for diagnostic message. Message names: ndt_scan_matcher
+[component_container_mt-3] [INFO] [1683879030.444935372] [sensing.lidar.rear.velodyne_convert_node]: This node is only tested for VLP16, VLP32C, and VLS128. Use other models at your own risk.
+[component_container_mt-3] [INFO] [1683879030.454781765] [sensing.lidar.rear.velodyne_convert_node]: correction angles: /home/hyt/ros_ws/awf/install/velodyne_pointcloud/share/velodyne_pointcloud/params/VLP16db.yaml
+[component_container_mt-3] [INFO] [1683879030.454830078] [sensing.lidar.rear.velodyne_convert_node]: correction angles: /home/hyt/ros_ws/awf/install/velodyne_pointcloud/share/velodyne_pointcloud/params/VLP16db.yaml
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/map/vector_map_tf_generator' in container '/map/map_container'
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/default_ad_api/node/motion' in container '/default_ad_api/container'
+[component_container_mt-3] [INFO] [1683879030.456927584] [calibration]: laser_ring[ 0] =  0, angle = -0.261799
+[component_container_mt-3] [INFO] [1683879030.456960427] [calibration]: laser_ring[ 2] =  1, angle = -0.226893
+[component_container_mt-3] [INFO] [1683879030.456965862] [calibration]: laser_ring[ 4] =  2, angle = -0.191986
+[component_container_mt-3] [INFO] [1683879030.456970309] [calibration]: laser_ring[ 6] =  3, angle = -0.157080
+[component_container_mt-3] [INFO] [1683879030.456974832] [calibration]: laser_ring[ 8] =  4, angle = -0.122173
+[component_container_mt-3] [INFO] [1683879030.456979415] [calibration]: laser_ring[10] =  5, angle = -0.087266
+[component_container_mt-3] [INFO] [1683879030.456983902] [calibration]: laser_ring[12] =  6, angle = -0.052360
+[component_container_mt-3] [INFO] [1683879030.456988363] [calibration]: laser_ring[14] =  7, angle = -0.017453
+[component_container_mt-3] [INFO] [1683879030.456992595] [calibration]: laser_ring[ 1] =  8, angle = +0.017453
+[component_container_mt-3] [INFO] [1683879030.456997178] [calibration]: laser_ring[ 3] =  9, angle = +0.052360
+[component_container_mt-3] [INFO] [1683879030.457001660] [calibration]: laser_ring[ 5] = 10, angle = +0.087266
+[component_container_mt-3] [INFO] [1683879030.457006139] [calibration]: laser_ring[ 7] = 11, angle = +0.122173
+[component_container_mt-3] [INFO] [1683879030.457010572] [calibration]: laser_ring[ 9] = 12, angle = +0.157080
+[component_container_mt-3] [INFO] [1683879030.457014786] [calibration]: laser_ring[11] = 13, angle = +0.191986
+[component_container_mt-3] [INFO] [1683879030.457019167] [calibration]: laser_ring[13] = 14, angle = +0.226893
+[component_container_mt-3] [INFO] [1683879030.457023605] [calibration]: laser_ring[15] = 15, angle = +0.261799
+[component_container_mt-3] [INFO] [1683879030.457111299] [sensing.lidar.rear.velodyne_convert_node]: Number of lasers: 16.
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/sensing/lidar/rear/velodyne_convert_node' in container 'pointcloud_container'
+[component_container_mt-3] [INFO] [1683879030.467228486] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::ApproximateDownsampleFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.467274840] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::BlockageDiagComponent>
+[component_container_mt-3] [INFO] [1683879030.467287534] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::CropBoxFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.467296698] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::DistortionCorrectorComponent>
+[component_container_mt-3] [INFO] [1683879030.467306720] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::DualReturnOutlierFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.467314908] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::Lanelet2MapFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.467322911] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::PassThroughFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.467329895] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::PassThroughFilterUInt16Component>
+[component_container_mt-3] [INFO] [1683879030.467337201] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::PointCloudConcatenateDataSynchronizerComponent>
+[component_container_mt-3] [INFO] [1683879030.467344994] [pointcloud_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::PointCloudConcatenateDataSynchronizerComponent>
+[aggregator_node-21] [WARN] [1683879030.474129297] [Aggregator]: No timestamp set for diagnostic message. Message names: controller_node_exe: control_state
+[component_container-26] [INFO] [1683879030.484456931] [map.vector_map_tf_generator]: broadcast static tf. map_frame:map, viewer_frame:viewer, x:3748.75, y:73723.9, z:19.4403
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/control/trajectory_follower/controller_node_exe' in container '/control/control_container'
+[component_container-39] [INFO] [1683879030.486290006] [control.control_container]: Load Library: /home/hyt/ros_ws/awf/install/external_cmd_selector/lib/libexternal_cmd_selector_node.so
+[component_container-39] [INFO] [1683879030.489466945] [control.control_container]: Found class: rclcpp_components::NodeFactoryTemplate<ExternalCmdSelector>
+[component_container-39] [INFO] [1683879030.489523275] [control.control_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<ExternalCmdSelector>
+[component_container_mt-3] [INFO] [1683879030.505504415] [sensing.lidar.concatenate_data]: Subscribing to 3 user given topics as inputs:
+[component_container_mt-3] [INFO] [1683879030.505565338] [sensing.lidar.concatenate_data]:  - /sensing/lidar/top/outlier_filtered/pointcloud
+[component_container_mt-3] [INFO] [1683879030.505579185] [sensing.lidar.concatenate_data]:  - /sensing/lidar/left/outlier_filtered/pointcloud
+[component_container_mt-3] [INFO] [1683879030.505585965] [sensing.lidar.concatenate_data]:  - /sensing/lidar/right/outlier_filtered/pointcloud
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/default_ad_api/node/operation_mode' in container '/default_ad_api/container'
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/sensing/lidar/concatenate_data' in container 'pointcloud_container'
+[aggregator_node-21] [WARN] [1683879030.513182235] [Aggregator]: No timestamp set for diagnostic message. Message names: concatenate_data: concat_status
+[component_container_mt-3] [INFO] [1683879030.513834951] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<velodyne_pointcloud::Convert>
+[component_container_mt-3] [INFO] [1683879030.513873256] [pointcloud_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<velodyne_pointcloud::Convert>
+[component_container_mt-3] [INFO] [1683879030.530645052] [sensing.lidar.top.velodyne_convert_node]: This node is only tested for VLP16, VLP32C, and VLS128. Use other models at your own risk.
+[component_container_mt-3] [INFO] [1683879030.535299089] [sensing.lidar.top.velodyne_convert_node]: correction angles: /home/hyt/ros_ws/awf/install/velodyne_pointcloud/share/velodyne_pointcloud/params/VLS-128_FS1.yaml
+[component_container_mt-3] [INFO] [1683879030.536492493] [sensing.lidar.top.velodyne_convert_node]: correction angles: /home/hyt/ros_ws/awf/install/velodyne_pointcloud/share/velodyne_pointcloud/params/VLS-128_FS1.yaml
+[aggregator_node-21] [WARN] [1683879030.539634433] [Aggregator]: No timestamp set for diagnostic message. Message names: external_cmd_selector: heartbeat
+[component_container-39] [INFO] [1683879030.540510556] [control.control_container]: Load Library: /home/hyt/ros_ws/awf/install/external_cmd_converter/lib/libexternal_cmd_converter.so
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/control/external_cmd_selector' in container '/control/control_container'
+[component_container-39] [INFO] [1683879030.543293118] [control.control_container]: Found class: rclcpp_components::NodeFactoryTemplate<external_cmd_converter::ExternalCmdConverterNode>
+[component_container-39] [INFO] [1683879030.543334226] [control.control_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<external_cmd_converter::ExternalCmdConverterNode>
+[component_container_mt-3] [INFO] [1683879030.547810089] [calibration]: laser_ring[36] =  0, angle = -0.436332
+[component_container_mt-3] [INFO] [1683879030.547835704] [calibration]: laser_ring[69] =  1, angle = -0.341770
+[component_container_mt-3] [INFO] [1683879030.547841222] [calibration]: laser_ring[54] =  2, angle = -0.279986
+[component_container_mt-3] [INFO] [1683879030.547845898] [calibration]: laser_ring[87] =  3, angle = -0.236754
+[component_container_mt-3] [INFO] [1683879030.547850050] [calibration]: laser_ring[ 0] =  4, angle = -0.204937
+[component_container_mt-3] [INFO] [1683879030.547854613] [calibration]: laser_ring[97] =  5, angle = -0.180572
+[component_container_mt-3] [INFO] [1683879030.547857264] [calibration]: laser_ring[18] =  6, angle = -0.161338
+[component_container_mt-3] [INFO] [1683879030.547859705] [calibration]: laser_ring[115] =  7, angle = -0.145770
+[component_container_mt-3] [INFO] [1683879030.547862174] [calibration]: laser_ring[44] =  8, angle = -0.133518
+[component_container_mt-3] [INFO] [1683879030.547864687] [calibration]: laser_ring[77] =  9, angle = -0.124791
+[component_container_mt-3] [INFO] [1683879030.547867392] [calibration]: laser_ring[62] = 10, angle = -0.119555
+[component_container_mt-3] [INFO] [1683879030.547869886] [calibration]: laser_ring[95] = 11, angle = -0.116064
+[component_container_mt-3] [INFO] [1683879030.547872345] [calibration]: laser_ring[ 8] = 12, angle = -0.113446
+[component_container_mt-3] [INFO] [1683879030.547874847] [calibration]: laser_ring[105] = 13, angle = -0.111527
+[component_container_mt-3] [INFO] [1683879030.547877303] [calibration]: laser_ring[26] = 14, angle = -0.109607
+[component_container_mt-3] [INFO] [1683879030.547879724] [calibration]: laser_ring[123] = 15, angle = -0.107687
+[component_container_mt-3] [INFO] [1683879030.547882135] [calibration]: laser_ring[100] = 16, angle = -0.105767
+[component_container_mt-3] [INFO] [1683879030.547884603] [calibration]: laser_ring[21] = 17, angle = -0.103847
+[component_container_mt-3] [INFO] [1683879030.547887112] [calibration]: laser_ring[118] = 18, angle = -0.101927
+[component_container_mt-3] [INFO] [1683879030.547889585] [calibration]: laser_ring[39] = 19, angle = -0.100007
+[component_container_mt-3] [INFO] [1683879030.547892064] [calibration]: laser_ring[64] = 20, angle = -0.098088
+[component_container_mt-3] [INFO] [1683879030.547894650] [calibration]: laser_ring[49] = 21, angle = -0.096168
+[component_container_mt-3] [INFO] [1683879030.547897077] [calibration]: laser_ring[82] = 22, angle = -0.094248
+[component_container_mt-3] [INFO] [1683879030.547899451] [calibration]: laser_ring[ 3] = 23, angle = -0.092328
+[component_container_mt-3] [INFO] [1683879030.547901862] [calibration]: laser_ring[108] = 24, angle = -0.090408
+[component_container_mt-3] [INFO] [1683879030.547904335] [calibration]: laser_ring[29] = 25, angle = -0.088488
+[component_container_mt-3] [INFO] [1683879030.547906804] [calibration]: laser_ring[126] = 26, angle = -0.086568
+[component_container_mt-3] [INFO] [1683879030.547909200] [calibration]: laser_ring[47] = 27, angle = -0.084648
+[component_container_mt-3] [INFO] [1683879030.547911612] [calibration]: laser_ring[72] = 28, angle = -0.082729
+[component_container_mt-3] [INFO] [1683879030.547913993] [calibration]: laser_ring[57] = 29, angle = -0.080809
+[component_container_mt-3] [INFO] [1683879030.547916427] [calibration]: laser_ring[90] = 30, angle = -0.078889
+[component_container_mt-3] [INFO] [1683879030.547918854] [calibration]: laser_ring[11] = 31, angle = -0.076969
+[component_container_mt-3] [INFO] [1683879030.547921236] [calibration]: laser_ring[52] = 32, angle = -0.075049
+[component_container_mt-3] [INFO] [1683879030.547940906] [calibration]: laser_ring[85] = 33, angle = -0.073129
+[component_container_mt-3] [INFO] [1683879030.547945874] [calibration]: laser_ring[ 6] = 34, angle = -0.071209
+[component_container_mt-3] [INFO] [1683879030.547950079] [calibration]: laser_ring[103] = 35, angle = -0.069290
+[component_container_mt-3] [INFO] [1683879030.547954205] [calibration]: laser_ring[16] = 36, angle = -0.067370
+[component_container_mt-3] [INFO] [1683879030.547958306] [calibration]: laser_ring[113] = 37, angle = -0.065450
+[component_container_mt-3] [INFO] [1683879030.547962276] [calibration]: laser_ring[34] = 38, angle = -0.063530
+[component_container_mt-3] [INFO] [1683879030.547966406] [calibration]: laser_ring[67] = 39, angle = -0.061610
+[component_container_mt-3] [INFO] [1683879030.547970226] [calibration]: laser_ring[60] = 40, angle = -0.059690
+[component_container_mt-3] [INFO] [1683879030.547974351] [calibration]: laser_ring[93] = 41, angle = -0.057770
+[component_container_mt-3] [INFO] [1683879030.547978434] [calibration]: laser_ring[14] = 42, angle = -0.055851
+[component_container_mt-3] [INFO] [1683879030.547982660] [calibration]: laser_ring[111] = 43, angle = -0.053931
+[component_container_mt-3] [INFO] [1683879030.547986775] [calibration]: laser_ring[24] = 44, angle = -0.052011
+[component_container_mt-3] [INFO] [1683879030.547990747] [calibration]: laser_ring[121] = 45, angle = -0.050091
+[component_container_mt-3] [INFO] [1683879030.547994861] [calibration]: laser_ring[42] = 46, angle = -0.048171
+[component_container_mt-3] [INFO] [1683879030.547999085] [calibration]: laser_ring[75] = 47, angle = -0.046251
+[component_container_mt-3] [INFO] [1683879030.548003051] [calibration]: laser_ring[116] = 48, angle = -0.044331
+[component_container_mt-3] [INFO] [1683879030.548007281] [calibration]: laser_ring[37] = 49, angle = -0.042412
+[component_container_mt-3] [INFO] [1683879030.548011378] [calibration]: laser_ring[70] = 50, angle = -0.040492
+[component_container_mt-3] [INFO] [1683879030.548015619] [calibration]: laser_ring[55] = 51, angle = -0.038572
+[component_container_mt-3] [INFO] [1683879030.548019682] [calibration]: laser_ring[80] = 52, angle = -0.036652
+[component_container_mt-3] [INFO] [1683879030.548023579] [calibration]: laser_ring[ 1] = 53, angle = -0.034732
+[component_container_mt-3] [INFO] [1683879030.548027831] [calibration]: laser_ring[98] = 54, angle = -0.032812
+[component_container_mt-3] [INFO] [1683879030.548031712] [calibration]: laser_ring[19] = 55, angle = -0.030892
+[component_container_mt-3] [INFO] [1683879030.548036159] [calibration]: laser_ring[124] = 56, angle = -0.028972
+[component_container_mt-3] [INFO] [1683879030.548040571] [calibration]: laser_ring[45] = 57, angle = -0.027053
+[component_container_mt-3] [INFO] [1683879030.548044765] [calibration]: laser_ring[78] = 58, angle = -0.025133
+[component_container_mt-3] [INFO] [1683879030.548048654] [calibration]: laser_ring[63] = 59, angle = -0.023213
+[component_container_mt-3] [INFO] [1683879030.548052956] [calibration]: laser_ring[88] = 60, angle = -0.021293
+[component_container_mt-3] [INFO] [1683879030.548057098] [calibration]: laser_ring[ 9] = 61, angle = -0.019373
+[component_container_mt-3] [INFO] [1683879030.548061444] [calibration]: laser_ring[106] = 62, angle = -0.017453
+[component_container_mt-3] [INFO] [1683879030.548065588] [calibration]: laser_ring[27] = 63, angle = -0.015533
+[component_container_mt-3] [INFO] [1683879030.548069670] [calibration]: laser_ring[ 4] = 64, angle = -0.013614
+[component_container_mt-3] [INFO] [1683879030.548074032] [calibration]: laser_ring[101] = 65, angle = -0.011694
+[component_container_mt-3] [INFO] [1683879030.548078144] [calibration]: laser_ring[22] = 66, angle = -0.009774
+[component_container_mt-3] [INFO] [1683879030.548082159] [calibration]: laser_ring[119] = 67, angle = -0.007854
+[component_container_mt-3] [INFO] [1683879030.548086368] [calibration]: laser_ring[32] = 68, angle = -0.005934
+[component_container_mt-3] [INFO] [1683879030.548090436] [calibration]: laser_ring[65] = 69, angle = -0.004014
+[component_container_mt-3] [INFO] [1683879030.548094612] [calibration]: laser_ring[50] = 70, angle = -0.002094
+[component_container_mt-3] [INFO] [1683879030.548098737] [calibration]: laser_ring[83] = 71, angle = -0.000175
+[component_container_mt-3] [INFO] [1683879030.548102835] [calibration]: laser_ring[12] = 72, angle = +0.001745
+[component_container_mt-3] [INFO] [1683879030.548107265] [calibration]: laser_ring[109] = 73, angle = +0.003665
+[component_container_mt-3] [INFO] [1683879030.548111503] [calibration]: laser_ring[30] = 74, angle = +0.005585
+[component_container_mt-3] [INFO] [1683879030.548116137] [calibration]: laser_ring[127] = 75, angle = +0.007505
+[component_container_mt-3] [INFO] [1683879030.548120309] [calibration]: laser_ring[40] = 76, angle = +0.009425
+[component_container_mt-3] [INFO] [1683879030.548125999] [calibration]: laser_ring[73] = 77, angle = +0.011345
+[component_container_mt-3] [INFO] [1683879030.548130223] [calibration]: laser_ring[58] = 78, angle = +0.013265
+[component_container_mt-3] [INFO] [1683879030.548134338] [calibration]: laser_ring[91] = 79, angle = +0.015184
+[component_container_mt-3] [INFO] [1683879030.548138463] [calibration]: laser_ring[68] = 80, angle = +0.017104
+[component_container_mt-3] [INFO] [1683879030.548142140] [calibration]: laser_ring[53] = 81, angle = +0.019024
+[component_container_mt-3] [INFO] [1683879030.548155623] [calibration]: laser_ring[86] = 82, angle = +0.020944
+[component_container_mt-3] [INFO] [1683879030.548161650] [calibration]: laser_ring[ 7] = 83, angle = +0.022864
+[component_container_mt-3] [INFO] [1683879030.548166099] [calibration]: laser_ring[96] = 84, angle = +0.024784
+[component_container_mt-3] [INFO] [1683879030.548170082] [calibration]: laser_ring[17] = 85, angle = +0.026704
+[component_container_mt-3] [INFO] [1683879030.548174084] [calibration]: laser_ring[114] = 86, angle = +0.028623
+[component_container_mt-3] [INFO] [1683879030.548178420] [calibration]: laser_ring[35] = 87, angle = +0.030543
+[component_container_mt-3] [INFO] [1683879030.548182510] [calibration]: laser_ring[76] = 88, angle = +0.032463
+[component_container_mt-3] [INFO] [1683879030.548186817] [calibration]: laser_ring[61] = 89, angle = +0.034383
+[component_container_mt-3] [INFO] [1683879030.548191012] [calibration]: laser_ring[94] = 90, angle = +0.036303
+[component_container_mt-3] [INFO] [1683879030.548194712] [calibration]: laser_ring[15] = 91, angle = +0.038223
+[component_container_mt-3] [INFO] [1683879030.548198891] [calibration]: laser_ring[104] = 92, angle = +0.040143
+[component_container_mt-3] [INFO] [1683879030.548203165] [calibration]: laser_ring[25] = 93, angle = +0.042062
+[component_container_mt-3] [INFO] [1683879030.548207519] [calibration]: laser_ring[122] = 94, angle = +0.043982
+[component_container_mt-3] [INFO] [1683879030.548211462] [calibration]: laser_ring[43] = 95, angle = +0.045902
+[component_container_mt-3] [INFO] [1683879030.548215827] [calibration]: laser_ring[20] = 96, angle = +0.047822
+[component_container_mt-3] [INFO] [1683879030.548220034] [calibration]: laser_ring[117] = 97, angle = +0.049742
+[component_container_mt-3] [INFO] [1683879030.548224123] [calibration]: laser_ring[38] = 98, angle = +0.051662
+[component_container_mt-3] [INFO] [1683879030.548228116] [calibration]: laser_ring[71] = 99, angle = +0.053582
+[component_container_mt-3] [INFO] [1683879030.548232146] [calibration]: laser_ring[48] = 100, angle = +0.055501
+[component_container_mt-3] [INFO] [1683879030.548236371] [calibration]: laser_ring[81] = 101, angle = +0.057421
+[component_container_mt-3] [INFO] [1683879030.548240656] [calibration]: laser_ring[ 2] = 102, angle = +0.059341
+[component_container_mt-3] [INFO] [1683879030.548245295] [calibration]: laser_ring[99] = 103, angle = +0.061261
+[component_container_mt-3] [INFO] [1683879030.548249513] [calibration]: laser_ring[28] = 104, angle = +0.063181
+[component_container_mt-3] [INFO] [1683879030.548253777] [calibration]: laser_ring[125] = 105, angle = +0.065101
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/sensing/lidar/top/velodyne_convert_node' in container 'pointcloud_container'
+[component_container_mt-3] [INFO] [1683879030.548257737] [calibration]: laser_ring[46] = 106, angle = +0.067021
+[component_container_mt-3] [INFO] [1683879030.548261291] [calibration]: laser_ring[79] = 107, angle = +0.068941
+[component_container_mt-3] [INFO] [1683879030.548264637] [calibration]: laser_ring[56] = 108, angle = +0.070860
+[component_container_mt-3] [INFO] [1683879030.548268172] [calibration]: laser_ring[89] = 109, angle = +0.072780
+[component_container_mt-3] [INFO] [1683879030.548271376] [calibration]: laser_ring[10] = 110, angle = +0.074700
+[component_container_mt-3] [INFO] [1683879030.548274905] [calibration]: laser_ring[107] = 111, angle = +0.076620
+[component_container_mt-3] [INFO] [1683879030.548278376] [calibration]: laser_ring[84] = 112, angle = +0.078540
+[component_container_mt-3] [INFO] [1683879030.548282355] [calibration]: laser_ring[ 5] = 113, angle = +0.080460
+[component_container_mt-3] [INFO] [1683879030.548285965] [calibration]: laser_ring[102] = 114, angle = +0.082380
+[component_container_mt-3] [INFO] [1683879030.548289477] [calibration]: laser_ring[23] = 115, angle = +0.084299
+[component_container_mt-3] [INFO] [1683879030.548292928] [calibration]: laser_ring[112] = 116, angle = +0.086917
+[component_container_mt-3] [INFO] [1683879030.548296326] [calibration]: laser_ring[33] = 117, angle = +0.090408
+[component_container_mt-3] [INFO] [1683879030.548299730] [calibration]: laser_ring[66] = 118, angle = +0.094771
+[component_container_mt-3] [INFO] [1683879030.548303164] [calibration]: laser_ring[51] = 119, angle = +0.100007
+[component_container_mt-3] [INFO] [1683879030.548306667] [calibration]: laser_ring[92] = 120, angle = +0.106116
+[component_container_mt-3] [INFO] [1683879030.548311522] [calibration]: laser_ring[13] = 121, angle = +0.113097
+[component_container_mt-3] [INFO] [1683879030.548315024] [calibration]: laser_ring[110] = 122, angle = +0.121824
+[component_container_mt-3] [INFO] [1683879030.548318578] [calibration]: laser_ring[31] = 123, angle = +0.132296
+[component_container_mt-3] [INFO] [1683879030.548322035] [calibration]: laser_ring[120] = 124, angle = +0.147131
+[component_container_mt-3] [INFO] [1683879030.548325693] [calibration]: laser_ring[41] = 125, angle = +0.169297
+[component_container_mt-3] [INFO] [1683879030.548329154] [calibration]: laser_ring[74] = 126, angle = +0.205076
+[component_container_mt-3] [INFO] [1683879030.548332565] [calibration]: laser_ring[59] = 127, angle = +0.261799
+[component_container_mt-3] [INFO] [1683879030.549110400] [sensing.lidar.top.velodyne_convert_node]: Number of lasers: 128.
+[component_container_mt-3] [INFO] [1683879030.555714049] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<velodyne_pointcloud::Convert>
+[component_container_mt-3] [INFO] [1683879030.555785774] [pointcloud_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<velodyne_pointcloud::Convert>
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/default_ad_api/node/planning' in container '/default_ad_api/container'
+[component_container_mt-3] [INFO] [1683879030.574488623] [sensing.lidar.left.velodyne_convert_node]: This node is only tested for VLP16, VLP32C, and VLS128. Use other models at your own risk.
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/control/external_cmd_converter' in container '/control/control_container'
+[aggregator_node-21] [WARN] [1683879030.574564933] [Aggregator]: No timestamp set for diagnostic message. Message names: external_cmd_converter: remote_control_topic_status
+[component_container-39] [INFO] [1683879030.575151420] [control.control_container]: Load Library: /home/hyt/ros_ws/awf/install/lane_departure_checker/lib/liblane_departure_checker.so
+[component_container_mt-3] [INFO] [1683879030.576831647] [sensing.lidar.left.velodyne_convert_node]: correction angles: /home/hyt/ros_ws/awf/install/velodyne_pointcloud/share/velodyne_pointcloud/params/VLP16db.yaml
+[component_container_mt-3] [INFO] [1683879030.576868819] [sensing.lidar.left.velodyne_convert_node]: correction angles: /home/hyt/ros_ws/awf/install/velodyne_pointcloud/share/velodyne_pointcloud/params/VLP16db.yaml
+[component_container_mt-3] [INFO] [1683879030.578184742] [calibration]: laser_ring[ 0] =  0, angle = -0.261799
+[component_container_mt-3] [INFO] [1683879030.578210323] [calibration]: laser_ring[ 2] =  1, angle = -0.226893
+[component_container_mt-3] [INFO] [1683879030.578216420] [calibration]: laser_ring[ 4] =  2, angle = -0.191986
+[component_container_mt-3] [INFO] [1683879030.578220560] [calibration]: laser_ring[ 6] =  3, angle = -0.157080
+[component_container_mt-3] [INFO] [1683879030.578224546] [calibration]: laser_ring[ 8] =  4, angle = -0.122173
+[component_container_mt-3] [INFO] [1683879030.578228987] [calibration]: laser_ring[10] =  5, angle = -0.087266
+[component_container_mt-3] [INFO] [1683879030.578233665] [calibration]: laser_ring[12] =  6, angle = -0.052360
+[component_container_mt-3] [INFO] [1683879030.578237662] [calibration]: laser_ring[14] =  7, angle = -0.017453
+[component_container_mt-3] [INFO] [1683879030.578241744] [calibration]: laser_ring[ 1] =  8, angle = +0.017453
+[component_container_mt-3] [INFO] [1683879030.578245988] [calibration]: laser_ring[ 3] =  9, angle = +0.052360
+[component_container_mt-3] [INFO] [1683879030.578250134] [calibration]: laser_ring[ 5] = 10, angle = +0.087266
+[component_container_mt-3] [INFO] [1683879030.578254119] [calibration]: laser_ring[ 7] = 11, angle = +0.122173
+[component_container_mt-3] [INFO] [1683879030.578258183] [calibration]: laser_ring[ 9] = 12, angle = +0.157080
+[component_container_mt-3] [INFO] [1683879030.578262157] [calibration]: laser_ring[11] = 13, angle = +0.191986
+[component_container_mt-3] [INFO] [1683879030.578266456] [calibration]: laser_ring[13] = 14, angle = +0.226893
+[component_container_mt-3] [INFO] [1683879030.578270478] [calibration]: laser_ring[15] = 15, angle = +0.261799
+[component_container_mt-3] [INFO] [1683879030.578349956] [sensing.lidar.left.velodyne_convert_node]: Number of lasers: 16.
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/sensing/lidar/left/velodyne_convert_node' in container 'pointcloud_container'
+[component_container_mt-3] [INFO] [1683879030.583994714] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::ApproximateDownsampleFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.584021908] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::BlockageDiagComponent>
+[component_container_mt-3] [INFO] [1683879030.584028468] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::CropBoxFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.584033356] [pointcloud_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::CropBoxFilterComponent>
+[component_container-39] [INFO] [1683879030.584415704] [control.control_container]: Found class: rclcpp_components::NodeFactoryTemplate<lane_departure_checker::LaneDepartureCheckerNode>
+[component_container-39] [INFO] [1683879030.584443670] [control.control_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<lane_departure_checker::LaneDepartureCheckerNode>
+[map_hash_generator-27] 1683879030.622192 [77]    python3: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/default_ad_api/node/routing' in container '/default_ad_api/container'
+[component_container_mt-3] [INFO] [1683879030.625996370] [sensing.lidar.right.crop_box_filter_mirror]: Filter (as Component) successfully created with the following parameters:
+[component_container_mt-3]  - approximate_sync : false
+[component_container_mt-3]  - use_indices      : false
+[component_container_mt-3]  - latched_indices  : false
+[component_container_mt-3]  - max_queue_size   : 5
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/control/trajectory_follower/lane_departure_checker_node' in container '/control/control_container'
+[aggregator_node-21] [WARN] [1683879030.641593358] [Aggregator]: No timestamp set for diagnostic message. Message names: lane_departure_checker_node: lane_departure
+[aggregator_node-21] [WARN] [1683879030.641821099] [Aggregator]: No timestamp set for diagnostic message. Message names: lane_departure_checker_node: trajectory_deviation
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/sensing/lidar/right/crop_box_filter_mirror' in container 'pointcloud_container'
+[component_container_mt-3] [INFO] [1683879030.646062016] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::ApproximateDownsampleFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.646096247] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::BlockageDiagComponent>
+[component_container_mt-3] [INFO] [1683879030.646108534] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::CropBoxFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.646114937] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::DistortionCorrectorComponent>
+[component_container_mt-3] [INFO] [1683879030.646119493] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::DualReturnOutlierFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.646124349] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::Lanelet2MapFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.646140267] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::PassThroughFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.646146059] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::PassThroughFilterUInt16Component>
+[component_container_mt-3] [INFO] [1683879030.646150406] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::PointCloudConcatenateDataSynchronizerComponent>
+[component_container_mt-3] [INFO] [1683879030.646155036] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::PointcloudAccumulatorComponent>
+[component_container_mt-3] [INFO] [1683879030.646159310] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::PolygonRemoverComponent>
+[component_container_mt-3] [INFO] [1683879030.646164151] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::RadiusSearch2DOutlierFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.646169651] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::RandomDownsampleFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.646177073] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::RingOutlierFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.646184680] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::VectorMapInsideAreaFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.646192441] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::VoxelGridDownsampleFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.646201083] [pointcloud_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::VoxelGridDownsampleFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.666590830] [localization.util.voxel_grid_downsample_filter]: Filter (as Component) successfully created with the following parameters:
+[component_container_mt-3]  - approximate_sync : false
+[component_container_mt-3]  - use_indices      : false
+[component_container_mt-3]  - latched_indices  : false
+[component_container_mt-3]  - max_queue_size   : 5
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/localization/util/voxel_grid_downsample_filter' in container 'pointcloud_container'
+[component_container_mt-3] [INFO] [1683879030.674504724] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::ApproximateDownsampleFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.674531937] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::BlockageDiagComponent>
+[component_container_mt-3] [INFO] [1683879030.674538577] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::CropBoxFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.674543770] [pointcloud_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::CropBoxFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.692200557] [sensing.lidar.rear.crop_box_filter_self]: Filter (as Component) successfully created with the following parameters:
+[component_container_mt-3]  - approximate_sync : false
+[component_container_mt-3]  - use_indices      : false
+[component_container_mt-3]  - latched_indices  : false
+[component_container_mt-3]  - max_queue_size   : 5
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/sensing/lidar/rear/crop_box_filter_self' in container 'pointcloud_container'
+[component_container_mt-3] [INFO] [1683879030.704281032] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::ApproximateDownsampleFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.704310171] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::BlockageDiagComponent>
+[component_container_mt-3] [INFO] [1683879030.704316740] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::CropBoxFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.704321833] [pointcloud_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::CropBoxFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.722847889] [sensing.lidar.top.crop_box_filter_self]: Filter (as Component) successfully created with the following parameters:
+[component_container_mt-3]  - approximate_sync : false
+[component_container_mt-3]  - use_indices      : false
+[component_container_mt-3]  - latched_indices  : false
+[component_container_mt-3]  - max_queue_size   : 5
+[component_container-39] [INFO] [1683879030.723383160] [control.control_container]: Load Library: /home/hyt/ros_ws/awf/install/shift_decider/lib/libshift_decider_node.so
+[component_container-39] [INFO] [1683879030.725108417] [control.control_container]: Found class: rclcpp_components::NodeFactoryTemplate<ShiftDecider>
+[component_container-39] [INFO] [1683879030.725144028] [control.control_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<ShiftDecider>
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/sensing/lidar/top/crop_box_filter_self' in container 'pointcloud_container'
+[component_container_mt-3] [INFO] [1683879030.737348832] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::ApproximateDownsampleFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.737390217] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::BlockageDiagComponent>
+[component_container_mt-3] [INFO] [1683879030.737422479] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::CropBoxFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.737434521] [pointcloud_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::CropBoxFilterComponent>
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/control/shift_decider' in container '/control/control_container'
+[component_container-39] [INFO] [1683879030.755396519] [control.control_container]: Load Library: /home/hyt/ros_ws/awf/install/vehicle_cmd_gate/lib/libvehicle_cmd_gate_node.so
+[component_container_mt-3] [INFO] [1683879030.760947953] [sensing.lidar.left.crop_box_filter_self]: Filter (as Component) successfully created with the following parameters:
+[component_container_mt-3]  - approximate_sync : false
+[component_container_mt-3]  - use_indices      : false
+[component_container_mt-3]  - latched_indices  : false
+[component_container_mt-3]  - max_queue_size   : 5
+[component_container-39] [INFO] [1683879030.761730242] [control.control_container]: Found class: rclcpp_components::NodeFactoryTemplate<vehicle_cmd_gate::VehicleCmdGate>
+[component_container-39] [INFO] [1683879030.761762024] [control.control_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<vehicle_cmd_gate::VehicleCmdGate>
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/sensing/lidar/left/crop_box_filter_self' in container 'pointcloud_container'
+[component_container_mt-3] [INFO] [1683879030.775597931] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::ApproximateDownsampleFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.775630595] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::BlockageDiagComponent>
+[component_container_mt-3] [INFO] [1683879030.775641110] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::CropBoxFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.775651139] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::DistortionCorrectorComponent>
+[component_container_mt-3] [INFO] [1683879030.775662785] [pointcloud_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::DistortionCorrectorComponent>
+[web_server.py-41] 1683879030.799586 [77]    python3: determined enp4s0 (udp/10.0.53.59) as highest quality interface, selected for automatic interface.
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/sensing/lidar/right/distortion_corrector_node' in container 'pointcloud_container'
+[component_container_mt-3] [INFO] [1683879030.816087585] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::ApproximateDownsampleFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.816122574] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::BlockageDiagComponent>
+[component_container_mt-3] [INFO] [1683879030.816135733] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::CropBoxFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.816143149] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::DistortionCorrectorComponent>
+[component_container_mt-3] [INFO] [1683879030.816150588] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::DualReturnOutlierFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.816158614] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::Lanelet2MapFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.816166493] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::PassThroughFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.816171042] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::PassThroughFilterUInt16Component>
+[component_container_mt-3] [INFO] [1683879030.816175983] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::PointCloudConcatenateDataSynchronizerComponent>
+[component_container_mt-3] [INFO] [1683879030.816203507] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::PointcloudAccumulatorComponent>
+[component_container_mt-3] [INFO] [1683879030.816216225] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::PolygonRemoverComponent>
+[component_container_mt-3] [INFO] [1683879030.816224502] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::RadiusSearch2DOutlierFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.816232581] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::RandomDownsampleFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.816240810] [pointcloud_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::RandomDownsampleFilterComponent>
+[aggregator_node-21] [WARN] [1683879030.836113247] [Aggregator]: No timestamp set for diagnostic message. Message names: vehicle_cmd_gate: heartbeat
+[aggregator_node-21] [WARN] [1683879030.836222374] [Aggregator]: No timestamp set for diagnostic message. Message names: vehicle_cmd_gate: emergency_stop_operation
+[web_server.py-41] WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+[web_server.py-41]  * Running on http://localhost:8888
+[web_server.py-41] Press CTRL+C to quit
+[component_container_mt-3] [INFO] [1683879030.842588509] [localization.util.random_downsample_filter]: Filter (as Component) successfully created with the following parameters:
+[component_container_mt-3]  - approximate_sync : false
+[component_container_mt-3]  - use_indices      : false
+[component_container_mt-3]  - latched_indices  : false
+[component_container_mt-3]  - max_queue_size   : 5
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/control/vehicle_cmd_gate' in container '/control/control_container'
+[component_container-39] [INFO] [1683879030.846574971] [control.control_container]: Load Library: /home/hyt/ros_ws/awf/install/operation_mode_transition_manager/lib/liboperation_mode_transition_manager_node.so
+[component_container-39] [INFO] [1683879030.850325164] [control.control_container]: Found class: rclcpp_components::NodeFactoryTemplate<operation_mode_transition_manager::OperationModeTransitionManager>
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/localization/util/random_downsample_filter' in container 'pointcloud_container'
+[component_container-39] [INFO] [1683879030.850360241] [control.control_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<operation_mode_transition_manager::OperationModeTransitionManager>
+[component_container_mt-3] [INFO] [1683879030.852153289] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::ApproximateDownsampleFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.852192354] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::BlockageDiagComponent>
+[component_container_mt-3] [INFO] [1683879030.852200435] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::CropBoxFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.852205650] [pointcloud_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::CropBoxFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.878641101] [sensing.lidar.rear.crop_box_filter_mirror]: Filter (as Component) successfully created with the following parameters:
+[component_container_mt-3]  - approximate_sync : false
+[component_container_mt-3]  - use_indices      : false
+[component_container_mt-3]  - latched_indices  : false
+[component_container_mt-3]  - max_queue_size   : 5
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/control/operation_mode_transition_manager' in container '/control/control_container'
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/sensing/lidar/rear/crop_box_filter_mirror' in container 'pointcloud_container'
+[component_container_mt-3] [INFO] [1683879030.890574509] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::ApproximateDownsampleFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.890600436] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::BlockageDiagComponent>
+[component_container_mt-3] [INFO] [1683879030.890606814] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::CropBoxFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.890612182] [pointcloud_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::CropBoxFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.905361482] [sensing.lidar.top.crop_box_filter_mirror]: Filter (as Component) successfully created with the following parameters:
+[component_container_mt-3]  - approximate_sync : false
+[component_container_mt-3]  - use_indices      : false
+[component_container_mt-3]  - latched_indices  : false
+[component_container_mt-3]  - max_queue_size   : 5
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/sensing/lidar/top/crop_box_filter_mirror' in container 'pointcloud_container'
+[component_container_mt-3] [INFO] [1683879030.916460771] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::ApproximateDownsampleFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.916486438] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::BlockageDiagComponent>
+[component_container_mt-3] [INFO] [1683879030.916492726] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::CropBoxFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.916497523] [pointcloud_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::CropBoxFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.931922904] [sensing.lidar.left.crop_box_filter_mirror]: Filter (as Component) successfully created with the following parameters:
+[component_container_mt-3]  - approximate_sync : false
+[component_container_mt-3]  - use_indices      : false
+[component_container_mt-3]  - latched_indices  : false
+[component_container_mt-3]  - max_queue_size   : 5
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/sensing/lidar/left/crop_box_filter_mirror' in container 'pointcloud_container'
+[component_container_mt-3] [INFO] [1683879030.942094354] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::ApproximateDownsampleFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.942120502] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::BlockageDiagComponent>
+[component_container_mt-3] [INFO] [1683879030.942126880] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::CropBoxFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.942131941] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::DistortionCorrectorComponent>
+[component_container_mt-3] [INFO] [1683879030.942136499] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::DualReturnOutlierFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.942140976] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::Lanelet2MapFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.942145414] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::PassThroughFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.942149891] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::PassThroughFilterUInt16Component>
+[component_container_mt-3] [INFO] [1683879030.942155078] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::PointCloudConcatenateDataSynchronizerComponent>
+[component_container_mt-3] [INFO] [1683879030.942160374] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::PointcloudAccumulatorComponent>
+[component_container_mt-3] [INFO] [1683879030.942175969] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::PolygonRemoverComponent>
+[component_container_mt-3] [INFO] [1683879030.942181862] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::RadiusSearch2DOutlierFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.942186411] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::RandomDownsampleFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.942190650] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::RingOutlierFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.942194975] [pointcloud_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::RingOutlierFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.959444223] [sensing.lidar.right.ring_outlier_filter]: Filter (as Component) successfully created with the following parameters:
+[component_container_mt-3]  - approximate_sync : false
+[component_container_mt-3]  - use_indices      : false
+[component_container_mt-3]  - latched_indices  : false
+[component_container_mt-3]  - max_queue_size   : 5
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/sensing/lidar/right/ring_outlier_filter' in container 'pointcloud_container'
+[component_container_mt-3] [INFO] [1683879030.967954638] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::ApproximateDownsampleFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.967988175] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::BlockageDiagComponent>
+[component_container_mt-3] [INFO] [1683879030.967994797] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::CropBoxFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.967999542] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::DistortionCorrectorComponent>
+[component_container_mt-3] [INFO] [1683879030.968006313] [pointcloud_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::DistortionCorrectorComponent>
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/sensing/lidar/rear/distortion_corrector_node' in container 'pointcloud_container'
+[component_container_mt-3] [INFO] [1683879030.991170835] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::ApproximateDownsampleFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.991197871] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::BlockageDiagComponent>
+[component_container_mt-3] [INFO] [1683879030.991205380] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::CropBoxFilterComponent>
+[component_container_mt-3] [INFO] [1683879030.991210182] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::DistortionCorrectorComponent>
+[component_container_mt-3] [INFO] [1683879030.991215557] [pointcloud_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::DistortionCorrectorComponent>
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/sensing/lidar/top/distortion_corrector_node' in container 'pointcloud_container'
+[component_container_mt-3] [INFO] [1683879031.018732823] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::ApproximateDownsampleFilterComponent>
+[component_container_mt-3] [INFO] [1683879031.018768556] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::BlockageDiagComponent>
+[component_container_mt-3] [INFO] [1683879031.018775817] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::CropBoxFilterComponent>
+[component_container_mt-3] [INFO] [1683879031.018780810] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::DistortionCorrectorComponent>
+[component_container_mt-3] [INFO] [1683879031.018785424] [pointcloud_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::DistortionCorrectorComponent>
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/sensing/lidar/left/distortion_corrector_node' in container 'pointcloud_container'
+[component_container_mt-3] [INFO] [1683879031.043544459] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::ApproximateDownsampleFilterComponent>
+[component_container_mt-3] [INFO] [1683879031.043594824] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::BlockageDiagComponent>
+[component_container_mt-3] [INFO] [1683879031.043607942] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::CropBoxFilterComponent>
+[component_container_mt-3] [INFO] [1683879031.043633291] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::DistortionCorrectorComponent>
+[component_container_mt-3] [INFO] [1683879031.043644416] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::DualReturnOutlierFilterComponent>
+[component_container_mt-3] [INFO] [1683879031.043652536] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::Lanelet2MapFilterComponent>
+[component_container_mt-3] [INFO] [1683879031.043662199] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::PassThroughFilterComponent>
+[component_container_mt-3] [INFO] [1683879031.043680896] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::PassThroughFilterUInt16Component>
+[component_container_mt-3] [INFO] [1683879031.043689428] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::PointCloudConcatenateDataSynchronizerComponent>
+[component_container_mt-3] [INFO] [1683879031.043697634] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::PointcloudAccumulatorComponent>
+[component_container_mt-3] [INFO] [1683879031.043705281] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::PolygonRemoverComponent>
+[component_container_mt-3] [INFO] [1683879031.043712984] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::RadiusSearch2DOutlierFilterComponent>
+[component_container_mt-3] [INFO] [1683879031.043720997] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::RandomDownsampleFilterComponent>
+[component_container_mt-3] [INFO] [1683879031.043730668] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::RingOutlierFilterComponent>
+[component_container_mt-3] [INFO] [1683879031.043739122] [pointcloud_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::RingOutlierFilterComponent>
+[component_container_mt-3] [INFO] [1683879031.061923081] [sensing.lidar.rear.ring_outlier_filter]: Filter (as Component) successfully created with the following parameters:
+[component_container_mt-3]  - approximate_sync : false
+[component_container_mt-3]  - use_indices      : false
+[component_container_mt-3]  - latched_indices  : false
+[component_container_mt-3]  - max_queue_size   : 5
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/sensing/lidar/rear/ring_outlier_filter' in container 'pointcloud_container'
+[component_container_mt-3] [INFO] [1683879031.071362539] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::ApproximateDownsampleFilterComponent>
+[component_container_mt-3] [INFO] [1683879031.071394366] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::BlockageDiagComponent>
+[component_container_mt-3] [INFO] [1683879031.071406359] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::CropBoxFilterComponent>
+[component_container_mt-3] [INFO] [1683879031.071415050] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::DistortionCorrectorComponent>
+[component_container_mt-3] [INFO] [1683879031.071422994] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::DualReturnOutlierFilterComponent>
+[component_container_mt-3] [INFO] [1683879031.071436467] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::Lanelet2MapFilterComponent>
+[component_container_mt-3] [INFO] [1683879031.071444790] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::PassThroughFilterComponent>
+[component_container_mt-3] [INFO] [1683879031.071453525] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::PassThroughFilterUInt16Component>
+[component_container_mt-3] [INFO] [1683879031.071462138] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::PointCloudConcatenateDataSynchronizerComponent>
+[component_container_mt-3] [INFO] [1683879031.071470217] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::PointcloudAccumulatorComponent>
+[component_container_mt-3] [INFO] [1683879031.071477467] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::PolygonRemoverComponent>
+[component_container_mt-3] [INFO] [1683879031.071484311] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::RadiusSearch2DOutlierFilterComponent>
+[component_container_mt-3] [INFO] [1683879031.071505855] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::RandomDownsampleFilterComponent>
+[component_container_mt-3] [INFO] [1683879031.071515260] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::RingOutlierFilterComponent>
+[component_container_mt-3] [INFO] [1683879031.071522797] [pointcloud_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::RingOutlierFilterComponent>
+[component_container_mt-3] [INFO] [1683879031.086595060] [sensing.lidar.top.ring_outlier_filter]: Filter (as Component) successfully created with the following parameters:
+[component_container_mt-3]  - approximate_sync : false
+[component_container_mt-3]  - use_indices      : false
+[component_container_mt-3]  - latched_indices  : false
+[component_container_mt-3]  - max_queue_size   : 5
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/sensing/lidar/top/ring_outlier_filter' in container 'pointcloud_container'
+[component_container_mt-3] [INFO] [1683879031.097045149] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::ApproximateDownsampleFilterComponent>
+[component_container_mt-3] [INFO] [1683879031.097070934] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::BlockageDiagComponent>
+[component_container_mt-3] [INFO] [1683879031.097077372] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::CropBoxFilterComponent>
+[component_container_mt-3] [INFO] [1683879031.097082696] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::DistortionCorrectorComponent>
+[component_container_mt-3] [INFO] [1683879031.097087553] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::DualReturnOutlierFilterComponent>
+[component_container_mt-3] [INFO] [1683879031.097091918] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::Lanelet2MapFilterComponent>
+[component_container_mt-3] [INFO] [1683879031.097096570] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::PassThroughFilterComponent>
+[component_container_mt-3] [INFO] [1683879031.097100867] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::PassThroughFilterUInt16Component>
+[component_container_mt-3] [INFO] [1683879031.097105523] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::PointCloudConcatenateDataSynchronizerComponent>
+[component_container_mt-3] [INFO] [1683879031.097110110] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::PointcloudAccumulatorComponent>
+[component_container_mt-3] [INFO] [1683879031.097115387] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::PolygonRemoverComponent>
+[component_container_mt-3] [INFO] [1683879031.097120409] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::RadiusSearch2DOutlierFilterComponent>
+[component_container_mt-3] [INFO] [1683879031.097124683] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::RandomDownsampleFilterComponent>
+[component_container_mt-3] [INFO] [1683879031.097128969] [pointcloud_container]: Found class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::RingOutlierFilterComponent>
+[component_container_mt-3] [INFO] [1683879031.097133381] [pointcloud_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<pointcloud_preprocessor::RingOutlierFilterComponent>
+[component_container_mt-3] [INFO] [1683879031.111866017] [sensing.lidar.left.ring_outlier_filter]: Filter (as Component) successfully created with the following parameters:
+[component_container_mt-3]  - approximate_sync : false
+[component_container_mt-3]  - use_indices      : false
+[component_container_mt-3]  - latched_indices  : false
+[component_container_mt-3]  - max_queue_size   : 5
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/sensing/lidar/left/ring_outlier_filter' in container 'pointcloud_container'
+[talker_qos-1] [INFO] [1683879031.208154705] [talker]: Publishing: "Hello World: 0"
+[listener_qos-2] [INFO] [1683879031.208713946] [listener]: I heard: [Hello World: 0]
+[rviz2-45] [INFO] [1683879031.802753312] [rviz2]: Stereo is NOT SUPPORTED
+[rviz2-45] [INFO] [1683879031.802862577] [rviz2]: OpenGl version: 4.6 (GLSL 4.6)
+[talker_qos-1] [INFO] [1683879032.208225686] [talker]: Publishing: "Hello World: 1"
+[listener_qos-2] [INFO] [1683879032.209013844] [listener]: I heard: [Hello World: 1]
+[rviz2-45] [INFO] [1683879032.327926742] [rviz2]: Stereo is NOT SUPPORTED
+[component_container_mt-3] [WARN] [1683879032.545586947] [sensing.lidar.concatenate_data]: New subscription discovered on topic '/sensing/lidar/concatenated/pointcloud', requesting incompatible QoS. No messages will be sent to it. Last incompatible policy: RELIABILITY_QOS_POLICY
+[talker_qos-1] [INFO] [1683879033.208050682] [talker]: Publishing: "Hello World: 2"
+[listener_qos-2] [INFO] [1683879033.208562800] [listener]: I heard: [Hello World: 2]
+[rviz2-45] [INFO] [1683879033.532991858] [rviz2]: Stereo is NOT SUPPORTED
+[talker_qos-1] [INFO] [1683879034.208953959] [talker]: Publishing: "Hello World: 3"
+[listener_qos-2] [INFO] [1683879034.211155276] [listener]: I heard: [Hello World: 3]
+[talker_qos-1] [INFO] [1683879035.209249203] [talker]: Publishing: "Hello World: 4"
+[listener_qos-2] [INFO] [1683879035.211212294] [listener]: I heard: [Hello World: 4]
+[talker_qos-1] [INFO] [1683879036.209394762] [talker]: Publishing: "Hello World: 5"
+[listener_qos-2] [INFO] [1683879036.211549302] [listener]: I heard: [Hello World: 5]
+[talker_qos-1] [INFO] [1683879037.209397178] [talker]: Publishing: "Hello World: 6"
+[listener_qos-2] [INFO] [1683879037.211590163] [listener]: I heard: [Hello World: 6]
+[talker_qos-1] [INFO] [1683879038.208744997] [talker]: Publishing: "Hello World: 7"
+[listener_qos-2] [INFO] [1683879038.210059746] [listener]: I heard: [Hello World: 7]
+[talker_qos-1] [INFO] [1683879039.209412389] [talker]: Publishing: "Hello World: 8"
+[listener_qos-2] [INFO] [1683879039.211596731] [listener]: I heard: [Hello World: 8]
+[talker_qos-1] [INFO] [1683879040.209383278] [talker]: Publishing: "Hello World: 9"
+[listener_qos-2] [INFO] [1683879040.211538440] [listener]: I heard: [Hello World: 9]
+[talker_qos-1] [INFO] [1683879041.209515646] [talker]: Publishing: "Hello World: 10"
+[listener_qos-2] [INFO] [1683879041.211706805] [listener]: I heard: [Hello World: 10]
+[talker_qos-1] [INFO] [1683879042.209257121] [talker]: Publishing: "Hello World: 11"
+[listener_qos-2] [INFO] [1683879042.211234304] [listener]: I heard: [Hello World: 11]
+[talker_qos-1] [INFO] [1683879043.209431626] [talker]: Publishing: "Hello World: 12"
+[listener_qos-2] [INFO] [1683879043.211566091] [listener]: I heard: [Hello World: 12]
+[talker_qos-1] [INFO] [1683879044.208053643] [talker]: Publishing: "Hello World: 13"
+[listener_qos-2] [INFO] [1683879044.208566155] [listener]: I heard: [Hello World: 13]
+[talker_qos-1] [INFO] [1683879045.208561381] [talker]: Publishing: "Hello World: 14"
+[listener_qos-2] [INFO] [1683879045.209686063] [listener]: I heard: [Hello World: 14]
+[talker_qos-1] [INFO] [1683879046.208429548] [talker]: Publishing: "Hello World: 15"
+[listener_qos-2] [INFO] [1683879046.209400434] [listener]: I heard: [Hello World: 15]
+[talker_qos-1] [INFO] [1683879047.209389213] [talker]: Publishing: "Hello World: 16"
+[listener_qos-2] [INFO] [1683879047.211600801] [listener]: I heard: [Hello World: 16]
+[talker_qos-1] [INFO] [1683879048.210448388] [talker]: Publishing: "Hello World: 17"
+[listener_qos-2] [INFO] [1683879048.212646213] [listener]: I heard: [Hello World: 17]
+[talker_qos-1] [INFO] [1683879049.210434453] [talker]: Publishing: "Hello World: 18"
+[listener_qos-2] [INFO] [1683879049.213115033] [listener]: I heard: [Hello World: 18]
+[talker_qos-1] [INFO] [1683879050.209408566] [talker]: Publishing: "Hello World: 19"
+[listener_qos-2] [INFO] [1683879050.212331535] [listener]: I heard: [Hello World: 19]
+[talker_qos-1] [INFO] [1683879051.209448369] [talker]: Publishing: "Hello World: 20"
+[listener_qos-2] [INFO] [1683879051.212773839] [listener]: I heard: [Hello World: 20]
+[talker_qos-1] [INFO] [1683879052.209465783] [talker]: Publishing: "Hello World: 21"
+[listener_qos-2] [INFO] [1683879052.211692501] [listener]: I heard: [Hello World: 21]
+[talker_qos-1] [INFO] [1683879053.209498330] [talker]: Publishing: "Hello World: 22"
+[listener_qos-2] [INFO] [1683879053.212136032] [listener]: I heard: [Hello World: 22]
+[talker_qos-1] [INFO] [1683879054.209565411] [talker]: Publishing: "Hello World: 23"
+[listener_qos-2] [INFO] [1683879054.211778796] [listener]: I heard: [Hello World: 23]
+[talker_qos-1] [INFO] [1683879055.209402726] [talker]: Publishing: "Hello World: 24"
+[listener_qos-2] [INFO] [1683879055.212563579] [listener]: I heard: [Hello World: 24]
+[talker_qos-1] [INFO] [1683879056.209556810] [talker]: Publishing: "Hello World: 25"
+[listener_qos-2] [INFO] [1683879056.211892660] [listener]: I heard: [Hello World: 25]
+[talker_qos-1] [INFO] [1683879057.209435336] [talker]: Publishing: "Hello World: 26"
+[listener_qos-2] [INFO] [1683879057.211775344] [listener]: I heard: [Hello World: 26]
+[talker_qos-1] [INFO] [1683879058.209460854] [talker]: Publishing: "Hello World: 27"
+[listener_qos-2] [INFO] [1683879058.211935710] [listener]: I heard: [Hello World: 27]
+[talker_qos-1] [INFO] [1683879059.208957746] [talker]: Publishing: "Hello World: 28"
+[listener_qos-2] [INFO] [1683879059.210872021] [listener]: I heard: [Hello World: 28]
+[talker_qos-1] [INFO] [1683879060.209444019] [talker]: Publishing: "Hello World: 29"
+[listener_qos-2] [INFO] [1683879060.212199677] [listener]: I heard: [Hello World: 29]
+[talker_qos-1] [INFO] [1683879061.209749683] [talker]: Publishing: "Hello World: 30"
+[listener_qos-2] [INFO] [1683879061.212439390] [listener]: I heard: [Hello World: 30]
+[talker_qos-1] [INFO] [1683879062.208977307] [talker]: Publishing: "Hello World: 31"
+[listener_qos-2] [INFO] [1683879062.210882884] [listener]: I heard: [Hello World: 31]
+[talker_qos-1] [INFO] [1683879063.209463867] [talker]: Publishing: "Hello World: 32"
+[listener_qos-2] [INFO] [1683879063.212728608] [listener]: I heard: [Hello World: 32]
+[talker_qos-1] [INFO] [1683879064.209017404] [talker]: Publishing: "Hello World: 33"
+[listener_qos-2] [INFO] [1683879064.210910551] [listener]: I heard: [Hello World: 33]
+[talker_qos-1] [INFO] [1683879065.208961523] [talker]: Publishing: "Hello World: 34"
+[listener_qos-2] [INFO] [1683879065.210852953] [listener]: I heard: [Hello World: 34]
+[talker_qos-1] [INFO] [1683879066.209439571] [talker]: Publishing: "Hello World: 35"
+[listener_qos-2] [INFO] [1683879066.212082984] [listener]: I heard: [Hello World: 35]
+[talker_qos-1] [INFO] [1683879067.209494690] [talker]: Publishing: "Hello World: 36"
+[listener_qos-2] [INFO] [1683879067.212140697] [listener]: I heard: [Hello World: 36]
+[talker_qos-1] [INFO] [1683879068.209471549] [talker]: Publishing: "Hello World: 37"
+[listener_qos-2] [INFO] [1683879068.212122398] [listener]: I heard: [Hello World: 37]
+[talker_qos-1] [INFO] [1683879069.209471281] [talker]: Publishing: "Hello World: 38"
+[listener_qos-2] [INFO] [1683879069.212124615] [listener]: I heard: [Hello World: 38]
+[talker_qos-1] [INFO] [1683879070.209439459] [talker]: Publishing: "Hello World: 39"
+[listener_qos-2] [INFO] [1683879070.212763547] [listener]: I heard: [Hello World: 39]
+[INFO] [talker_qos-1]: process has finished cleanly [pid 374079]
+[INFO] [launch]: process[talker_qos-1] was required: shutting down launched system
+[INFO] [rviz2-45]: sending signal 'SIGINT' to process[rviz2-45]
+[INFO] [component_container_mt-44]: sending signal 'SIGINT' to process[component_container_mt-44]
+[INFO] [routing_adaptor-43]: sending signal 'SIGINT' to process[routing_adaptor-43]
+[INFO] [initial_pose_adaptor-42]: sending signal 'SIGINT' to process[initial_pose_adaptor-42]
+[INFO] [web_server.py-41]: sending signal 'SIGINT' to process[web_server.py-41]
+[INFO] [component_container_mt-40]: sending signal 'SIGINT' to process[component_container_mt-40]
+[INFO] [component_container-39]: sending signal 'SIGINT' to process[component_container-39]
+[INFO] [localization_error_monitor-38]: sending signal 'SIGINT' to process[localization_error_monitor-38]
+[INFO] [twist2accel-37]: sending signal 'SIGINT' to process[twist2accel-37]
+[INFO] [stop_filter-36]: sending signal 'SIGINT' to process[stop_filter-36]
+[INFO] [ekf_localizer-35]: sending signal 'SIGINT' to process[ekf_localizer-35]
+[INFO] [gyro_odometer-34]: sending signal 'SIGINT' to process[gyro_odometer-34]
+[INFO] [ndt_scan_matcher-33]: sending signal 'SIGINT' to process[ndt_scan_matcher-33]
+[INFO] [automatic_pose_initializer-32]: sending signal 'SIGINT' to process[automatic_pose_initializer-32]
+[INFO] [pose_initializer_node-31]: sending signal 'SIGINT' to process[pose_initializer_node-31]
+[INFO] [vehicle_velocity_converter-30]: sending signal 'SIGINT' to process[vehicle_velocity_converter-30]
+[INFO] [gnss_poser-29]: sending signal 'SIGINT' to process[gnss_poser-29]
+[INFO] [imu_corrector-28]: sending signal 'SIGINT' to process[imu_corrector-28]
+[INFO] [map_hash_generator-27]: sending signal 'SIGINT' to process[map_hash_generator-27]
+[INFO] [component_container-26]: sending signal 'SIGINT' to process[component_container-26]
+[INFO] [component_container-25]: sending signal 'SIGINT' to process[component_container-25]
+[INFO] [component_container-24]: sending signal 'SIGINT' to process[component_container-24]
+[INFO] [emergency_handler-23]: sending signal 'SIGINT' to process[emergency_handler-23]
+[INFO] [system_error_monitor-22]: sending signal 'SIGINT' to process[system_error_monitor-22]
+[INFO] [routing_adaptor-43]: process has finished cleanly [pid 374587]
+[INFO] [aggregator_node-21]: sending signal 'SIGINT' to process[aggregator_node-21]
+[INFO] [initial_pose_adaptor-42]: process has finished cleanly [pid 374569]
+[INFO] [topic_state_monitor_node-20]: sending signal 'SIGINT' to process[topic_state_monitor_node-20]
+[INFO] [localization_error_monitor-38]: process has finished cleanly [pid 374522]
+[INFO] [topic_state_monitor_node-19]: sending signal 'SIGINT' to process[topic_state_monitor_node-19]
+[INFO] [twist2accel-37]: process has finished cleanly [pid 374520]
+[INFO] [web_server.py-41]: process has finished cleanly [pid 374535]
+[INFO] [topic_state_monitor_node-18]: sending signal 'SIGINT' to process[topic_state_monitor_node-18]
+[INFO] [stop_filter-36]: process has finished cleanly [pid 374518]
+[INFO] [ekf_localizer-35]: process has finished cleanly [pid 374467]
+[INFO] [topic_state_monitor_node-17]: sending signal 'SIGINT' to process[topic_state_monitor_node-17]
+[INFO] [component_container_mt-44]: process has finished cleanly [pid 374597]
+[INFO] [gyro_odometer-34]: process has finished cleanly [pid 374432]
+[INFO] [topic_state_monitor_node-16]: sending signal 'SIGINT' to process[topic_state_monitor_node-16]
+[INFO] [topic_state_monitor_node-15]: sending signal 'SIGINT' to process[topic_state_monitor_node-15]
+[INFO] [automatic_pose_initializer-32]: process has finished cleanly [pid 374382]
+[INFO] [topic_state_monitor_node-14]: sending signal 'SIGINT' to process[topic_state_monitor_node-14]
+[INFO] [pose_initializer_node-31]: process has finished cleanly [pid 374342]
+[INFO] [topic_state_monitor_node-13]: sending signal 'SIGINT' to process[topic_state_monitor_node-13]
+[INFO] [vehicle_velocity_converter-30]: process has finished cleanly [pid 374331]
+[INFO] [topic_state_monitor_node-12]: sending signal 'SIGINT' to process[topic_state_monitor_node-12]
+[INFO] [gnss_poser-29]: process has finished cleanly [pid 374260]
+[INFO] [topic_state_monitor_node-11]: sending signal 'SIGINT' to process[topic_state_monitor_node-11]
+[INFO] [imu_corrector-28]: process has finished cleanly [pid 374256]
+[INFO] [topic_state_monitor_node-10]: sending signal 'SIGINT' to process[topic_state_monitor_node-10]
+[INFO] [topic_state_monitor_node-9]: sending signal 'SIGINT' to process[topic_state_monitor_node-9]
+[INFO] [topic_state_monitor_node-8]: sending signal 'SIGINT' to process[topic_state_monitor_node-8]
+[INFO] [topic_state_monitor_node-7]: sending signal 'SIGINT' to process[topic_state_monitor_node-7]
+[INFO] [map_hash_generator-27]: process has finished cleanly [pid 374254]
+[INFO] [component_container-25]: process has finished cleanly [pid 374250]
+[INFO] [component_container-6]: sending signal 'SIGINT' to process[component_container-6]
+[INFO] [component_container-24]: process has finished cleanly [pid 374248]
+[INFO] [ndt_scan_matcher-33]: process has finished cleanly [pid 374397]
+[INFO] [service_log_checker-5]: sending signal 'SIGINT' to process[service_log_checker-5]
+[INFO] [robot_state_publisher-4]: sending signal 'SIGINT' to process[robot_state_publisher-4]
+[INFO] [emergency_handler-23]: process has finished cleanly [pid 374246]
+[INFO] [component_container_mt-3]: sending signal 'SIGINT' to process[component_container_mt-3]
+[INFO] [listener_qos-2]: sending signal 'SIGINT' to process[listener_qos-2]
+[INFO] [system_error_monitor-22]: process has finished cleanly [pid 374244]
+[rviz2-45] [INFO] [1683879071.403906134] [rclcpp]: signal_handler(signum=2)
+[component_container_mt-44] [INFO] [1683879071.414470916] [rclcpp]: signal_handler(signum=2)
+[routing_adaptor-43] [INFO] [1683879071.424180494] [rclcpp]: signal_handler(signum=2)
+[initial_pose_adaptor-42] [INFO] [1683879071.432788308] [rclcpp]: signal_handler(signum=2)
+[component_container_mt-40] [INFO] [1683879071.453518857] [rclcpp]: signal_handler(signum=2)
+[component_container-39] [INFO] [1683879071.464858156] [rclcpp]: signal_handler(signum=2)
+[localization_error_monitor-38] [INFO] [1683879071.476198716] [rclcpp]: signal_handler(signum=2)
+[twist2accel-37] [INFO] [1683879071.487159514] [rclcpp]: signal_handler(signum=2)
+[stop_filter-36] [INFO] [1683879071.498039654] [rclcpp]: signal_handler(signum=2)
+[ekf_localizer-35] [INFO] [1683879071.508776848] [rclcpp]: signal_handler(signum=2)
+[gyro_odometer-34] [INFO] [1683879071.519528628] [rclcpp]: signal_handler(signum=2)
+[ndt_scan_matcher-33] [INFO] [1683879071.530783092] [rclcpp]: signal_handler(signum=2)
+[automatic_pose_initializer-32] [INFO] [1683879071.541730820] [rclcpp]: signal_handler(signum=2)
+[pose_initializer_node-31] [INFO] [1683879071.552728655] [rclcpp]: signal_handler(signum=2)
+[INFO] [aggregator_node-21]: process has finished cleanly [pid 374242]
+[vehicle_velocity_converter-30] [INFO] [1683879071.563604216] [rclcpp]: signal_handler(signum=2)
+[gnss_poser-29] [INFO] [1683879071.574468052] [rclcpp]: signal_handler(signum=2)
+[imu_corrector-28] [INFO] [1683879071.585883379] [rclcpp]: signal_handler(signum=2)
+[component_container-26] [INFO] [1683879071.611071385] [rclcpp]: signal_handler(signum=2)
+[component_container-25] [INFO] [1683879071.621238133] [rclcpp]: signal_handler(signum=2)
+[component_container-24] [INFO] [1683879071.632921461] [rclcpp]: signal_handler(signum=2)
+[emergency_handler-23] [INFO] [1683879071.648081929] [rclcpp]: signal_handler(signum=2)
+[system_error_monitor-22] [INFO] [1683879071.663895761] [rclcpp]: signal_handler(signum=2)
+[topic_state_monitor_node-20] [INFO] [1683879071.704144967] [rclcpp]: signal_handler(signum=2)
+[topic_state_monitor_node-19] [INFO] [1683879071.722961122] [rclcpp]: signal_handler(signum=2)
+[topic_state_monitor_node-18] [INFO] [1683879071.738552089] [rclcpp]: signal_handler(signum=2)
+[topic_state_monitor_node-17] [INFO] [1683879071.749841199] [rclcpp]: signal_handler(signum=2)
+[topic_state_monitor_node-16] [INFO] [1683879071.760857538] [rclcpp]: signal_handler(signum=2)
+[topic_state_monitor_node-15] [INFO] [1683879071.772441510] [rclcpp]: signal_handler(signum=2)
+[topic_state_monitor_node-14] [INFO] [1683879071.782384496] [rclcpp]: signal_handler(signum=2)
+[topic_state_monitor_node-13] [INFO] [1683879071.792632082] [rclcpp]: signal_handler(signum=2)
+[topic_state_monitor_node-12] [INFO] [1683879071.801878851] [rclcpp]: signal_handler(signum=2)
+[topic_state_monitor_node-11] [INFO] [1683879071.810773766] [rclcpp]: signal_handler(signum=2)
+[topic_state_monitor_node-10] [INFO] [1683879071.820871885] [rclcpp]: signal_handler(signum=2)
+[topic_state_monitor_node-9] [INFO] [1683879071.829910298] [rclcpp]: signal_handler(signum=2)
+[topic_state_monitor_node-8] [INFO] [1683879071.839462365] [rclcpp]: signal_handler(signum=2)
+[topic_state_monitor_node-7] [INFO] [1683879071.849949127] [rclcpp]: signal_handler(signum=2)
+[component_container-6] [INFO] [1683879071.858421289] [rclcpp]: signal_handler(signum=2)
+[service_log_checker-5] [INFO] [1683879071.866220684] [rclcpp]: signal_handler(signum=2)
+[robot_state_publisher-4] [INFO] [1683879071.873908517] [rclcpp]: signal_handler(signum=2)
+[component_container_mt-3] [INFO] [1683879071.881952484] [rclcpp]: signal_handler(signum=2)
+[INFO] [topic_state_monitor_node-20]: process has finished cleanly [pid 374240]
+[INFO] [component_container-26]: process has finished cleanly [pid 374252]
+[INFO] [topic_state_monitor_node-19]: process has finished cleanly [pid 374238]
+[INFO] [topic_state_monitor_node-18]: process has finished cleanly [pid 374236]
+[INFO] [topic_state_monitor_node-17]: process has finished cleanly [pid 374234]
+[INFO] [component_container_mt-40]: process has finished cleanly [pid 374533]
+[INFO] [topic_state_monitor_node-16]: process has finished cleanly [pid 374232]
+[INFO] [component_container-39]: process has finished cleanly [pid 374531]
+[INFO] [topic_state_monitor_node-15]: process has finished cleanly [pid 374230]
+[INFO] [topic_state_monitor_node-14]: process has finished cleanly [pid 374105]
+[INFO] [topic_state_monitor_node-13]: process has finished cleanly [pid 374103]
+[INFO] [topic_state_monitor_node-12]: process has finished cleanly [pid 374101]
+[INFO] [topic_state_monitor_node-11]: process has finished cleanly [pid 374099]
+[INFO] [topic_state_monitor_node-10]: process has finished cleanly [pid 374097]
+[INFO] [topic_state_monitor_node-9]: process has finished cleanly [pid 374095]
+[INFO] [topic_state_monitor_node-8]: process has finished cleanly [pid 374093]
+[INFO] [topic_state_monitor_node-7]: process has finished cleanly [pid 374091]
+[INFO] [component_container-6]: process has finished cleanly [pid 374089]
+[INFO] [service_log_checker-5]: process has finished cleanly [pid 374087]
+[INFO] [robot_state_publisher-4]: process has finished cleanly [pid 374085]
+[INFO] [listener_qos-2]: process has finished cleanly [pid 374081]
+[INFO] [component_container_mt-3]: process has finished cleanly [pid 374083]
+[ERROR] [rviz2-45]: process[rviz2-45] failed to terminate '5' seconds after receiving 'SIGINT', escalating to 'SIGTERM'
+[INFO] [rviz2-45]: sending signal 'SIGTERM' to process[rviz2-45]
+[ERROR] [rviz2-45]: process has died [pid 374609, exit code -15, cmd '/opt/ros/humble/lib/rviz2/rviz2 -d /home/hyt/ros_ws/awf/install/autoware_launch/share/autoware_launch/rviz/autoware.rviz -s /home/hyt/ros_ws/awf/install/autoware_launch/share/autoware_launch/rviz/image/autoware.png --ros-args -r __node:=rviz2 -p use_sim_time:=True -p wheel_radius:=0.383 -p wheel_width:=0.235 -p wheel_base:=2.79 -p wheel_tread:=1.64 -p front_overhang:=1.0 -p rear_overhang:=1.1 -p left_overhang:=0.128 -p right_overhang:=0.128 -p vehicle_height:=2.5 -p max_steer_angle:=0.7'].
+
+~/ros_ws/awf main* ⇣ 1m
+❯ echo $status
+0
