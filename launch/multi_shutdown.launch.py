@@ -19,6 +19,6 @@ def generate_launch_description():
             executable="listener_qos",
             name="listener",
             output="screen",
-            # arguments=["--number_of_cycles", LaunchConfiguration("number_of_cycles")],
+            arguments=["--number_of_cycles", "1000"],
             on_exit=launch.actions.Shutdown())
     ])

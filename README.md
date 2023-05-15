@@ -2,9 +2,12 @@
 
 ROS 2 launchの終了ステータスを検証するリポジトリ
 
-## 参考リンク
+## 本リポジトリの目的
 
-https://ubuntu.com/blog/ros2-launch-required-nodes
+[driving_log_replayer](https://github.com/tier4/driving_log_replayer)でlaunchの終了ステータスが0(正常)にならないことがある。
+異常終了するのはlaunchに[required node](https://ubuntu.com/blog/ros2-launch-required-nodes)が複数ある場合で、required nodeが1つの場合は0になる。
+
+launchの仕様上、複数設定すると異常終了になるのか、autoware固有の問題なのか明らかにすることを目的とする。
 
 ## セットアップ手順
 
@@ -26,44 +29,17 @@ rosdep install --from-paths src --ignore-src --rosdistro=$ROS_DISTRO
 colcon build --symlink-install --catkin-skip-building-tests --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Release
 ```
 
-## 疑問点
-
-groupでくくってもlogging_simulator.launch.xmlをincludeするとargが出てきてしまうlogging_simulator.launch.xmlの方でscoped=falseを指定したら上でどうやっても伝搬を防げない？
-
-```shell
-~/ros_ws/awf main*
-❯ ros2 launch launch_exit_status multi_shutdown_with_autoware.launch.xml -s
-Arguments (pass arguments as '<name>:=<value>'):
-
-    'map_path':
-        point cloud and lanelet2 map directory path
-
-    'vehicle_model':
-        vehicle model name
-
-    'sensor_model':
-        sensor model name
-
-    'vehicle_id':
-        vehicle specific ID
-        (default: EnvVar('VEHICLE_ID'))
-
-    'vehicle':
-        launch vehicle
-        (default: 'true')
-...
-長いので省略
-```
-
 ## 終了ステータスの確認
 
-ノードをrequiredにしてlaunchしてノードが終了したらlaunchも終わるようにしておく。
-正常終了するlaunchにautoware_launchを追加すると何故か終了ステータスが1になる
+まず、複数のrequired nodeを使用すると終了ステータスが1になるのが、ROS 2の仕様なのか、autowareの問題なのかを切り分ける
 
-### 正常終了
+### autowareのlaunchを使用しない場合
 
-talkerとlisnterの両方のノードをrequiredにする。10回publishしたら終わる。
-talkerが終わったあとに、shutting down launched systemが走って、listnerが終了して、もう一度shutting down launched systemが走っている
+demo_node_pyのtalkerとlistenerをrequired指定した[launch](./launch/multi_required.launch.py)を利用する。
+
+10回publishしたら終わる。
+talkerが終わったあとに、shutting down launched systemが走って、listnerが終了して、もう一度shutting down launched systemが走っている。
+終了ステータスは0になっている。
 
 ```bash
 hyt@dpc1909014-2204:~/ros_ws/awf$ cd $HOME/ros_ws/awf
@@ -106,7 +82,17 @@ hyt@dpc1909014-2204:~/ros_ws/awf$ echo $?
 0
 ```
 
-### 異常終了
+よって、ROS 2の仕様上は、複数のrequired nodeを指定しても問題はなく、autowareのlaunchと組み合わせると何故か問題が起こることがわかる。
+
+### autowareのlaunchを使用しない場合
+
+[multi_shutdown_with_autoware.launch.py](./launch/multi_shutdown_with_autoware.launch.py)を使用
+
+1. composable nodeのload_nodeが殺されてWARINGが出ている。多分これが原因で終了ステータス1になっていそう
+2. perceptionに関しては、engineファイルが生成されていればこの問題は発生しない模様
+
+
+#### サービス待ち
 
 ```bash
 hyt@dpc1909014-2204:~/ros_ws/awf$ cd $HOME/ros_ws/awf
