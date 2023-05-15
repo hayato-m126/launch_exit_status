@@ -26,7 +26,7 @@ def generate_launch_description():
     )
 
     return launch.LaunchDescription([
-        DeclareLaunchArgument("number_of_cycles", default_value="40"),
+        DeclareLaunchArgument("number_of_cycles", default_value="10"),
         autoware_launch,
         launch_ros.actions.Node(
             package="demo_nodes_py",

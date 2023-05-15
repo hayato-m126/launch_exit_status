@@ -89,41 +89,29 @@ hyt@dpc1909014-2204:~/ros_ws/awf$ echo $?
 [driving_log_replayer](https://github.com/tier4/driving_log_replayer)で、required nodeが一つだけなら正常終了することがわかっている。
 複数個のreuqired nodeを設定した場合、異常になる原因が、[driving_log_replayer](https://github.com/tier4/driving_log_replayer)にあるノードの問題ではないことを確認するために、前述のtalkerとlistnerに入れ替えた場合でも起こることを確認する。
 
-[multi_shutdown_with_autoware.launch.py](./launch/multi_shutdown_with_autoware.launch.py)を使用
+まず正常終了(0)になるであろうlaunchを作って、reuqiredをつけることで、挙動が変わること示す。
+[single_required_with_aw.launch.py](./launch/single_required_with_aw.launch.py)を使用
 
-1. composable nodeのload_nodeが殺されてWARINGが出ている。多分これが原因で終了ステータス1になっていそう
-2. perceptionに関しては、engineファイルが生成されていればこの問題は発生しない模様
-
-
-#### サービス待ち
+#### コンテナのload_nodeで警告が出て例外を吐く
 
 ```bash
 hyt@dpc1909014-2204:~/ros_ws/awf$ cd $HOME/ros_ws/awf
 hyt@dpc1909014-2204:~/ros_ws/awf$ source install/setup.bash
-hyt@dpc1909014-2204:~/ros_ws/awf$ ros2 launch launch_exit_status multi_shutdown_with_autoware.launch.py map_path:=$HOME/map/sample vehicle_model:=sample_vehicle sensor_model:=sample_sensor_kit
- ros2 launch launch_exit_status multi_shutdown_with_autoware.launch.py map_path:=$HOME/map/sample vehicle_model:=sample_vehicle sensor_model:=sample_sensor_kit
+hyt@dpc1909014-2204:~/ros_ws/awf$ ros2 launch launch_exit_status single_required_with_aw.launch.py map_path:=$HOME/map/sample vehicle_model:=sample_vehicle sensor_model:=sample_sensor_kit planning:=true
 ...
-長いので省略 logs/multi_shutdown_with_loggging_simualtor_launch.txt参照
+長いので省略 logs/single_required_with_aw.txt参照
 ...
 hyt@dpc1909014-2204:~/ros_ws/awf$ echo $?
 1
 ```
 
-怪しくみえるのは以下の部分、サービスを待っているが、shutdownによって殺されている。
-`ros2 launch autoware_launch logging_simulator.launch.xml map_path:=$HOME/map/sample sensor_model:=sample_sensor_kit vehicle_model:=sample_vehicle`を叩いてCtrl+Cで終了したときの[ログ](logs/manually_launch_logging_simulator_launch.txt)と比べると、Ctrl+Cのときにはこの部分出てない
+何故か異常終了している。
+[ログ](./logs/single_required_with_aw.txt)を見ると、サービスのFutureでexceptionが出ている。
+includeせずに直接`ros2 launch autoware_launch logging_simulator.launch.xml map_path:=$HOME/map/sample sensor_model:=sample_sensor_kit vehicle_model:=sample_vehicle`した場合の[ログ](./logs/manually_launch_logging_simulator_launch.txt)を見ると、同じようにload_nodeの警告が出ているものの、Futureの例外は吐いていない（よくわからない）
 
 ```shell
-[INFO] [talker_qos-1]: process has finished cleanly [pid 167516]
-[INFO] [launch]: process[talker_qos-1] was required: shutting down launched system
-[INFO] [rviz2-70]: sending signal 'SIGINT' to process[rviz2-70]
+[WARNING] [launch_ros.actions.load_composable_nodes]: Abandoning wait for the '/planning/scenario_planning/parking/parking_container/_container/load_node' service response, due to shutdown.
 [INFO] [component_container_mt-69]: sending signal 'SIGINT' to process[component_container_mt-69]
-[INFO] [routing_adaptor-68]: sending signal 'SIGINT' to process[routing_adaptor-68]
-[INFO] [initial_pose_adaptor-67]: sending signal 'SIGINT' to process[initial_pose_adaptor-67]
-[INFO] [web_server.py-66]: sending signal 'SIGINT' to process[web_server.py-66]
-[INFO] [component_container_mt-65]: sending signal 'SIGINT' to process[component_container_mt-65]
-[WARNING] [launch_ros.actions.load_composable_nodes]: Abandoning wait for the '/perception/traffic_light_recognition/traffic_light_node_container/_container/load_node' service response, due to shutdown.
-[WARNING] [launch_ros.actions.load_composable_nodes]: Abandoning wait for the '/perception/traffic_light_recognition/traffic_light_node_container/_container/load_node' service response, due to shutdown.
-[WARNING] [launch_ros.actions.load_composable_nodes]: Abandoning wait for the '/perception/traffic_light_recognition/traffic_light_node_container/_container/load_node' service response, due to shutdown.
 Future exception was never retrieved
 future: <Future finished exception=InvalidHandle('cannot use Destroyable because destruction was requested')>
 Traceback (most recent call last):
@@ -138,13 +126,37 @@ Traceback (most recent call last):
   File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/client.py", line 159, in service_is_ready
     with self.handle:
 rclpy._rclpy_pybind11.InvalidHandle: cannot use Destroyable because destruction was requested
+[INFO] [routing_adaptor-68]: sending signal 'SIGINT' to process[routing_adaptor-68]
+[INFO] [initial_pose_adaptor-67]: sending signal 'SIGINT' to process[initial_pose_adaptor-67]
+[INFO] [web_server.py-66]: sending signal 'SIGINT' to process[web_server.py-66]
+[INFO] [component_container_mt-65]: sending signal 'SIGINT' to process[component_container_mt-65]
 [INFO] [component_container-64]: sending signal 'SIGINT' to process[component_container-64]
 [INFO] [planning_evaluator-63]: sending signal 'SIGINT' to process[planning_evaluator-63]
 [INFO] [planning_validator_node-62]: sending signal 'SIGINT' to process[planning_validator_node-62]
 [INFO] [component_container-61]: sending signal 'SIGINT' to process[component_container-61]
 [INFO] [component_container_mt-60]: sending signal 'SIGINT' to process[component_container_mt-60]
 [INFO] [rtc_auto_mode_manager_node-59]: sending signal 'SIGINT' to process[rtc_auto_mode_manager_node-59]
-[WARNING] [launch_ros.actions.load_composable_nodes]: Abandoning wait for the '/planning/scenario_planning/parking/parking_container/_container/load_node' service response, due to shutdown.
+[INFO] [routing_adaptor-68]: process has finished cleanly [pid 1441767]
+[INFO] [component_container_mt-58]: sending signal 'SIGINT' to process[component_container_mt-58]
+[INFO] [initial_pose_adaptor-67]: process has finished cleanly [pid 1441761]
+[INFO] [motion_velocity_smoother-57]: sending signal 'SIGINT' to process[motion_velocity_smoother-57]
+[INFO] [web_server.py-66]: process has finished cleanly [pid 1441724]
+[INFO] [external_velocity_limit_selector-56]: sending signal 'SIGINT' to process[external_velocity_limit_selector-56]
+[INFO] [planning_evaluator-63]: process has finished cleanly [pid 1441708]
+[INFO] [scenario_selector-55]: sending signal 'SIGINT' to process[scenario_selector-55]
+[INFO] [planning_validator_node-62]: process has finished cleanly [pid 1441706]
+[INFO] [goal_pose_visualizer-54]: sending signal 'SIGINT' to process[goal_pose_visualizer-54]
+[INFO] [mission_planner-53]: sending signal 'SIGINT' to process[mission_planner-53]
+[INFO] [component_container-61]: process has finished cleanly [pid 1441677]
+[INFO] [traffic_light_map_visualizer_node-52]: sending signal 'SIGINT' to process[traffic_light_map_visualizer_node-52]
+[INFO] [component_container_mt-69]: process has finished cleanly [pid 1441785]
+[INFO] [component_container_mt-51]: sending signal 'SIGINT' to process[component_container_mt-51]
+[INFO] [traffic_light_map_based_detector_node-50]: sending signal 'SIGINT' to process[traffic_light_map_based_detector_node-50]
+[INFO] [motion_velocity_smoother-57]: process has finished cleanly [pid 1441560]
+[INFO] [map_based_prediction-49]: sending signal 'SIGINT' to process[map_based_prediction-49]
+[WARNING] [launch_ros.actions.load_composable_nodes]: Abandoning wait for the '/perception/traffic_light_recognition/traffic_light_node_container/_container/load_node' service response, due to shutdown.
+[WARNING] [launch_ros.actions.load_composable_nodes]: Abandoning wait for the '/perception/traffic_light_recognition/traffic_light_node_container/_container/load_node' service response, due to shutdown.
+[INFO] [rtc_auto_mode_manager_node-59]: process has finished cleanly [pid 1441578]
 Future exception was never retrieved
 future: <Future finished exception=InvalidHandle('cannot use Destroyable because destruction was requested')>
 Traceback (most recent call last):
@@ -161,31 +173,42 @@ Traceback (most recent call last):
 rclpy._rclpy_pybind11.InvalidHandle: cannot use Destroyable because destruction was requested
 ```
 
-サービスの待機は、ros2 bag playをして、topicを流さないと進まないように見えるので、perceptionとplanningをfalseにして動かないようにして起動する。
+perceptionに関しては、onnxの変換のログが大量に出ているので、engineファイルが生成できてないことによる問題と認識して、engineが出力されるまでしばらく放置した。
+[ログ](./logs/generate_engine_file.txt.txt)を見る限り、engineの出力が完了したら、perceptionのload_nodeの警告はでなくなった。
+planningについては問題は解決しなかった。
+
+#### planning offにして正常終了させる
+
+planning起動しているとエラー吐くのでモジュールを呼ばないことで回避する
 
 ```bash
-hyt@dpc1909014-2204:~/ros_ws/awf$ ros2 launch launch_exit_status multi_shutdown_with_autoware.launch.py map_path:=$HOME/map/sample vehicle_model:=sample_vehicle sensor_model:=sample_sensor_kit planning:=false
+hyt@dpc1909014-2204:~/ros_ws/awf$ ros2 launch launch_exit_status single_required_with_aw.launch.py map_path:=$HOME/map/sample vehicle_model:=sample_vehicle sensor_model:=sample_sensor_kit planning:=false
 ...
 長いので省略
-logs/mulit_shutdown_planning_perception_off参照
+logs/single_required_with_aw_planning_off参照
+...
+hyt@dpc1909014-2204:~/ros_ws/awf$ echo $?
+0
+```
+
+planningがoffでreuqired nodeが1個なら正常終了になる
+
+#### reuqired nodeを複数にする
+
+正常終了するsingle_required_with_aw.launch.pyのlistenerのon_exitのコメントを外してrequired nodeにしたlaunchを起動する
+
+```bash
+hyt@dpc1909014-2204:~/ros_ws/awf$ ros2 launch launch_exit_status multi_required_with_aw.launch.py map_path:=$HOME/map/sample vehicle_model:=sample_vehicle sensor_model:=sample_sensor_kit planning:=false
+...
+長いので省略
+logs/multi_required_with_aw_planning_off参照
 ...
 hyt@dpc1909014-2204:~/ros_ws/awf$ echo $?
 1
 ```
 
-モジュールをoffにしたにも関わらずstatusが1になる。
-[driving_log_replayer](https://github.com/tier4/driving_log_replayer)において、複数のnodeのrequiredを複数入れると何故かexit status 1になることがわかっているので、listenerのノードからon_exitを取り除いて、on_exitを一つにしたlaunchを使用する。
-
-```bash
-hyt@dpc1909014-2204:~/ros_ws/awf$ ros2 launch launch_exit_status single_shutdown_with_autoware.launch.py map_path:=$HOME/map/sample vehicle_model:=sample_vehicle sensor_model:=sample_sensor_kit
- ros2 launch launch_exit_status multi_shutdown_with_autoware.launch.py map_path:=$HOME/map/sample vehicle_model:=sample_vehicle sensor_model:=sample_sensor_kit perception:=false planning:=false
-...
-長いので省略
-logs/single_shutdown_planning_perception_off参照
-...
-hyt@dpc1909014-2204:~/ros_ws/awf$ echo $?
-0
-```
+違いは、reuqired nodeの数だけでstatusが1になる。
+autowareを抜いたmulti_required.launch.pyではstatus 0なので、やはりautowareのlaunchを入れるか入れないかで挙動が違う
 
 ## わからないこと
 
