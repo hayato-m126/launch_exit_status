@@ -27,6 +27,7 @@ def generate_launch_description():
 
     return launch.LaunchDescription([
         DeclareLaunchArgument("number_of_cycles", default_value="40"),
+        autoware_launch,
         launch_ros.actions.Node(
             package="demo_nodes_py",
             executable="talker_qos",
@@ -43,5 +44,4 @@ def generate_launch_description():
             arguments=["--number_of_cycles", "1000"],
             # on_exit=launch.actions.Shutdown() # do not call lisnterner Shutdown
         ),
-        autoware_launch,
     ])

@@ -84,7 +84,10 @@ hyt@dpc1909014-2204:~/ros_ws/awf$ echo $?
 
 よって、ROS 2の仕様上は、複数のrequired nodeを指定しても問題はなく、autowareのlaunchと組み合わせると何故か問題が起こることがわかる。
 
-### autowareのlaunchを使用しない場合
+### autowareのlaunchを使用する場合
+
+[driving_log_replayer](https://github.com/tier4/driving_log_replayer)で、required nodeが一つだけなら正常終了することがわかっている。
+複数個のreuqired nodeを設定した場合、異常になる原因が、[driving_log_replayer](https://github.com/tier4/driving_log_replayer)にあるノードの問題ではないことを確認するために、前述のtalkerとlistnerに入れ替えた場合でも起こることを確認する。
 
 [multi_shutdown_with_autoware.launch.py](./launch/multi_shutdown_with_autoware.launch.py)を使用
 
@@ -161,8 +164,7 @@ rclpy._rclpy_pybind11.InvalidHandle: cannot use Destroyable because destruction 
 サービスの待機は、ros2 bag playをして、topicを流さないと進まないように見えるので、perceptionとplanningをfalseにして動かないようにして起動する。
 
 ```bash
-hyt@dpc1909014-2204:~/ros_ws/awf$ ros2 launch launch_exit_status multi_shutdown_with_autoware.launch.py map_path:=$HOME/map/sample vehicle_model:=sample_vehicle sensor_model:=sample_sensor_kit
- ros2 launch launch_exit_status multi_shutdown_with_autoware.launch.py map_path:=$HOME/map/sample vehicle_model:=sample_vehicle sensor_model:=sample_sensor_kit perception:=false planning:=false
+hyt@dpc1909014-2204:~/ros_ws/awf$ ros2 launch launch_exit_status multi_shutdown_with_autoware.launch.py map_path:=$HOME/map/sample vehicle_model:=sample_vehicle sensor_model:=sample_sensor_kit planning:=false
 ...
 長いので省略
 logs/mulit_shutdown_planning_perception_off参照

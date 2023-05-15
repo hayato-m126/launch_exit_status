@@ -21,7 +21,6 @@ def generate_launch_description():
             "map_path": LaunchConfiguration("map_path"),
             "vehicle_model": LaunchConfiguration("vehicle_model"),
             "sensor_model": LaunchConfiguration("sensor_model"),
-            "perception": LaunchConfiguration("perception"),
             "planning": LaunchConfiguration("planning"),
         }.items(),
     )
