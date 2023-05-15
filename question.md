@@ -4,7 +4,7 @@ groupでくくってもlogging_simulator.launch.xmlをincludeするとargが出�
 
 ```shell
 ~/ros_ws/awf main*
-❯ ros2 launch launch_exit_status multi_shutdown_with_autoware.launch.xml -s
+❯ ros2 launch launch_exit_status scope_sample.launch.xml -s
 Arguments (pass arguments as '<name>:=<value>'):
 
     'map_path':
