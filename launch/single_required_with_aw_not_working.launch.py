@@ -22,6 +22,7 @@ def generate_launch_description():
             "vehicle_model": LaunchConfiguration("vehicle_model"),
             "sensor_model": LaunchConfiguration("sensor_model"),
             "planning": LaunchConfiguration("planning"),
+            "rviz": LaunchConfiguration("rviz"),
         }.items(),
     )
 

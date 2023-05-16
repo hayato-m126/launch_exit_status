@@ -235,9 +235,21 @@ autowareを抜いたmulti_required.launch.pyではstatus 0なので、やはりa
 single_required_with_aw_not_working.launchを利用する。LaunchDescriptionの配列にlogging_simulator.launch.xmlをtalkerとlistenerよりも先に書くと、talkerとlistenerが呼ばれない。
 
 ```shell
-hyt@dpc1909014-2204:~/ros_ws/awf$ ros2 launch launch_exit_status single_required_with_aw_not_working.launch.py map_path:=$HOME/map/sample vehicle_model:=sample_vehicle sensor_model:=sample_sensor_kit planning:=false
+hyt@dpc1909014-2204:~/ros_ws/awf$ ros2 launch launch_exit_status single_required_with_aw_not_working.launch.py map_path:=$HOME/map/sample vehicle_model:=sample_vehicle sensor_model:=sample_sensor_kit planning:=false rviz:=true
 ...
 本来はtalkerが10回publishされたら終わるが、talkerが呼ばれないのでずっと終わらない
 ...
 ```
 
+diriving_log_replyaerの[launch](https://github.com/tier4/driving_log_replayer/blob/develop/driving_log_replayer/launch/perception.launch.py#L72-L75)では、ノードより先に渡しているが動作している。
+
+driving_log_replyaerではautowareが用意しているrvizの起動をoffにして独自のrvizを出すようにしているので、rvizをoffにしてみたが変わらない。
+
+```shell
+hyt@dpc1909014-2204:~/ros_ws/awf$ ros2 launch launch_exit_status single_required_with_aw_not_working.launch.py map_path:=$HOME/map/sample vehicle_model:=sample_vehicle sensor_model:=sample_sensor_kit planning:=false rviz:=false
+...
+rvizが起動されないだけでtalker,listenerが呼ばれないのは変わらない
+...
+```
+
+driving_log_replayerでは問題なく動作しているのに、このリポジトリではLaunchDescriptionの配列にlogging_simulator.launch.xmlをtalkerとlistenerよりも先に書くと、talkerとlistenerが呼ばれない。(疑問3)
