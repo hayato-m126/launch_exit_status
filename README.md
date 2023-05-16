@@ -26,6 +26,7 @@ wasimでは、driving_log_replayerのlaunchの終了ステータスを取って�
 1. logging_simulator.launch.xmlをlaunch.actions.Shutdown()で終了させると、planningがexceptionを吐く
 2. logging_simulator.launch.xmlをincludeしてもrequired nodeが複数だと終了ステータスが1になる
 3. logging_simulator.launch.xmlをノードより先に起動すると、ノードが起動せずにロックされる。driving_log_replayerでは何故か動いている
+4. logging_simulator.launch.xmlをincludeすると、groupでscoped trueにしてもargumentが外に出てくる
 
 ## セットアップ手順
 
@@ -253,3 +254,32 @@ rvizが起動されないだけでtalker,listenerが呼ばれないのは変わ�
 ```
 
 driving_log_replayerでは問題なく動作しているのに、このリポジトリではLaunchDescriptionの配列にlogging_simulator.launch.xmlをtalkerとlistenerよりも先に書くと、talkerとlistenerが呼ばれない。(疑問3)
+
+#### logging_simulator.launch.xmlのargumentが伝搬する
+
+groupでくくってもlogging_simulator.launch.xmlをincludeするとargが出てきてしまうlogging_simulator.launch.xmlの方でscoped=falseを指定したら上でどうやっても伝搬を防げない？(疑問4)
+
+```shell
+~/ros_ws/awf main*
+❯ ros2 launch launch_exit_status scope_sample.launch.xml -s
+Arguments (pass arguments as '<name>:=<value>'):
+
+    'map_path':
+        point cloud and lanelet2 map directory path
+
+    'vehicle_model':
+        vehicle model name
+
+    'sensor_model':
+        sensor model name
+
+    'vehicle_id':
+        vehicle specific ID
+        (default: EnvVar('VEHICLE_ID'))
+
+    'vehicle':
+        launch vehicle
+        (default: 'true')
+...
+長いので省略
+```

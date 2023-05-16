@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
-  <!-- argが出てくる -->
+  <!-- Argument in logging_simulator.launch.xml is displayed even though the scope of group is set to true. -->
   <group scoped="true">
     <include file="$(find-pkg-share autoware_launch)/launch/logging_simulator.launch.xml" />
   </group>
