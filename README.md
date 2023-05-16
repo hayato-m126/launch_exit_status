@@ -7,7 +7,25 @@ ROS 2 launchの終了ステータスを検証するリポジトリ
 [driving_log_replayer](https://github.com/tier4/driving_log_replayer)でlaunchの終了ステータスが0(正常)にならないことがある。
 異常終了するのはlaunchに[required node](https://ubuntu.com/blog/ros2-launch-required-nodes)が複数ある場合で、required nodeが1つの場合は0になる。
 
-launchの仕様上、複数設定すると異常終了になるのか、autoware固有の問題なのか明らかにすることを目的とする。
+driving_log_replayerをクラウドで実行する[Autoware Evaluator](https://docs.web.auto/user-manuals/evaluator/introduction)では、[wasim](https://docs.web.auto/developers-guides/wasim/introduction)がdriving_log_replayerを起動するRunnerとなっている。
+wasimでは、driving_log_replayerのlaunchの終了ステータスを取って、シミュレーションの成否を判定しているので、ノードが評価終了を検知してlaunchのシャットダウンまで進んだのであれば終了ステータスは0になってくれないと、wasimで表示される結果が間違ってしまう。
+
+なので、launchの仕様の問題で、終了ステータスが1になるのか、autoware固有の問題なのか明らかにすることを目的とする。
+
+## 結論と疑問点
+
+以降の検証で明らかになったこと、事象としては確認出来たが、なぜそうなるのかわからない疑問点をまとめておく。
+
+### 結論
+
+1. required nodeを複数作っても終了ステータスは0で終わる
+2. logging_simulator.launch.xmlをincludeしてもrequired nodeが1個なら終了ステータス0で終わる
+
+### 疑問
+
+1. logging_simulator.launch.xmlをlaunch.actions.Shutdown()で終了させると、planningがexceptionを吐く
+2. logging_simulator.launch.xmlをincludeしてもrequired nodeが複数だと終了ステータスが1になる
+3. logging_simulator.launch.xmlをノードより先に起動すると、ノードが起動せずにロックされる。driving_log_replayerでは何故か動いている
 
 ## セットアップ手順
 
@@ -82,7 +100,7 @@ hyt@dpc1909014-2204:~/ros_ws/awf$ echo $?
 0
 ```
 
-よって、ROS 2の仕様上は、複数のrequired nodeを指定しても問題はなく、autowareのlaunchと組み合わせると何故か問題が起こることがわかる。
+よって、ROS 2の仕様上は、複数のrequired nodeを指定しても問題はない。(結論1)
 
 ### autowareのlaunchを使用する場合
 
@@ -177,6 +195,8 @@ perceptionに関しては、onnxの変換のログが大量に出ているので
 [ログ](./logs/generate_engine_file.txt.txt)を見る限り、engineの出力が完了したら、perceptionのload_nodeの警告はでなくなった。
 planningについては問題は解決しなかった。
 
+logging_simulator.launch.pyを直接起動して、Ctrl+Cで止める分には終了ステータスは0だが、includeして、launch.actions.Shutdown()で終了させると、planningがexceptionを吐く(疑問1)
+
 #### planning offにして正常終了させる
 
 planning起動しているとエラー吐くのでモジュールを呼ばないことで回避する
@@ -191,7 +211,7 @@ hyt@dpc1909014-2204:~/ros_ws/awf$ echo $?
 0
 ```
 
-planningがoffでreuqired nodeが1個なら正常終了になる
+planningがoffでreuqired nodeが1個なら正常終了になる(結論2)
 
 #### reuqired nodeを複数にする
 
@@ -208,16 +228,16 @@ hyt@dpc1909014-2204:~/ros_ws/awf$ echo $?
 ```
 
 違いは、reuqired nodeの数だけでstatusが1になる。
-autowareを抜いたmulti_required.launch.pyではstatus 0なので、やはりautowareのlaunchを入れるか入れないかで挙動が違う
+autowareを抜いたmulti_required.launch.pyではstatus 0なので、やはりautowareのlaunchを入れるか入れないかで挙動が違う(疑問2)
 
-## わからないこと
+#### launch.LaunchDescriptionでlogging_simulator.launch.xmlのあとに渡す処理が呼ばれない
 
-- multi_shutdown.launch.pyで2個on_exitを設定してもlogging_simulator.launch.xmlを呼ばなければexit statusは0であることが確認できる
-- 何故かlogging_simulator.launch.xmlと一緒に動かすと複数個のon_exitでexit statusが1になってしまう。
+single_required_with_aw_not_working.launchを利用する。LaunchDescriptionの配列にlogging_simulator.launch.xmlをtalkerとlistenerよりも先に書くと、talkerとlistenerが呼ばれない。
 
-## 困ってること
+```shell
+hyt@dpc1909014-2204:~/ros_ws/awf$ ros2 launch launch_exit_status single_required_with_aw_not_working.launch.py map_path:=$HOME/map/sample vehicle_model:=sample_vehicle sensor_model:=sample_sensor_kit planning:=false
+...
+本来はtalkerが10回publishされたら終わるが、talkerが呼ばれないのでずっと終わらない
+...
+```
 
-[diving_log_replayer](https://github.com/tier4/driving_log_replayer)では、評価が終了したときにノードがshutdownして、launchが終了する仕組みを使用している。
-
-また、driving_log_replayerをクラウドで実行する[Autoware Evaluator](https://docs.web.auto/user-manuals/evaluator/introduction)では、[wasim](https://docs.web.auto/developers-guides/wasim/introduction)がdriving_log_replayerを起動するRunnerとなっている。
-wasimでは、driving_log_replayerのlaunchの終了ステータスを取って、成否を判定しているので、ノードが異常終了した場合以外は、終了ステータスは0になってくれないと、wasimの結果が間違って出てしまう。
