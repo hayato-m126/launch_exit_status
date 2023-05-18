@@ -1,39 +1,37 @@
 # launch_exit_status
 
-This repository verifies the exit status of ROS 2 launch.
+ROS 2 launchの終了ステータスを検証するリポジトリ
 
-Japanese documentation is available [here](./README-ja.md).
+## 本リポジトリの目的
 
-## Purpose of this repository
+[driving_log_replayer](https://github.com/tier4/driving_log_replayer)でlaunchの終了ステータスが0(正常)にならないことがある。
+異常終了するのはlaunchに[required node](https://ubuntu.com/blog/ros2-launch-required-nodes)が複数ある場合で、required nodeが1つの場合は0になる。
 
-The exit status of a launch may not be 0 (normal) in [driving_log_replayer](https://github.com/tier4/driving_log_replayer).
-The abnormal termination occurs when there are multiple [required nodes](https://ubuntu.com/blog/ros2-launch-required-nodes) in the launch, and the status becomes 0 when there is only one required node.
+driving_log_replayerをクラウドで実行する[Autoware Evaluator](https://docs.web.auto/user-manuals/evaluator/introduction)では、[wasim](https://docs.web.auto/developers-guides/wasim/introduction)がdriving_log_replayerを起動するRunnerとなっている。
+wasimでは、driving_log_replayerのlaunchの終了ステータスを取って、シミュレーションの成否を判定する。
+なので、ノードが評価終了を検知してlaunchのシャットダウンまで進んだのであれば終了ステータスは0である必要がある。
 
-In [Autoware Evaluator](https://docs.web.auto/user-manuals/evaluator/introduction), which runs driving_log_replayer in the cloud, [wasim](https:// docs.web.auto/developers-guides/wasim/introduction) is the Runner that starts driving_log_replayer.
-In wasim, the success or failure of the simulation is determined by taking the exit status of the driving_log_replayer launch.
-So if the node has detected the end of the evaluation and proceeded to the launch shutdown, the exit status should be 0.
+なので、launchの仕様の問題で、終了ステータスが1になるのか、autoware固有の問題なのか明らかにすることを目的とする。
 
-Therefore, the purpose is to clarify whether the exit status becomes 1 due to a problem in the launch specification or whether it is an autoware-specific problem.
+## 結論と疑問点
 
-## Conclusions and questions
+以降の検証で明らかになったこと、事象としては確認出来たが、なぜそうなるのかわからない疑問点をまとめておく。
 
-This section summarises what has been clarified in the subsequent verification and the questions that have been confirmed in the event
+### 結論
 
-### Conclusions
+1. required nodeを複数作っても終了ステータスは0で終わる
+2. logging_simulator.launch.xmlをincludeしてもrequired nodeが1個なら終了ステータス0で終わる
 
-1. even if multiple required nodes are created, the exit status ends with 0
-2. even if logging_simulator.launch.xml is included, if there is only one required node, the exit status ends with 0
+### 疑問
 
-### Questions
+1. logging_simulator.launch.xmlをlaunch.actions.Shutdown()で終了させると、planningがexceptionを吐く
+2. logging_simulator.launch.xmlをincludeしてもrequired nodeが複数だと終了ステータスが1になる
+3. logging_simulator.launch.xmlをノードより先に起動すると、ノードが起動せずにロックされる。driving_log_replayerでは何故か動いている
+4. logging_simulator.launch.xmlをincludeすると、groupでscoped trueにしてもargumentが外に出てくる
 
-1. when logging_simulator.launch.xml is terminated by launch.actions.Shutdown(), planning throws exception
-2. even if logging_simulator.launch.xml is included, exit status is 1 if there are multiple required nodes.
-3. if logging_simulator.launch.xml is started before the node, the node is locked without starting. driving_log_replayer is working for some reason.
-4. when logging_simulator.launch.xml is included, the argument comes out even if scoped true in group.
+## セットアップ手順
 
-## Setup instructions
-
-Put this repository together in autoware foundation's autoware and build the workspace.
+autoware foundationのautowareにこのリポジトリを一緒に入れてビルドする
 
 ```shell
 mkdir -p $HOME/ros_ws
@@ -51,17 +49,17 @@ rosdep install --from-paths src --ignore-src --rosdistro=$ROS_DISTRO
 colcon build --symlink-install --catkin-skip-building-tests --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Release
 ```
 
-## Check exit status
+## 終了ステータスの確認
 
-First, judge whether the exit status of 1 when using multiple required nodes is a ROS 2 specification or an autoware problem.
+まず、複数のrequired nodeを使用すると終了ステータスが1になるのが、ROS 2の仕様なのか、autowareの問題なのかを切り分ける
 
-### Without autoware launch
+### autowareのlaunchを使用しない場合
 
-Use the [launch](./launch/multi_required.launch.py) file that loads the talker and listener of demo_node_py specified as required.
+demo_node_pyのtalkerとlistenerをrequired指定した[launch](./launch/multi_required.launch.py)を利用する。
 
-After 10 publishes, it is finished.
-After the talker finishes, the SHUTTING DOWN LAUNCH SYSTEM runs, the LISTNER finishes and the SHUTTING DOWN LAUNCH SYSTEM runs again.
-The exit status is 0.
+10回publishしたら終わる。
+talkerが終わったあとに、shutting down launched systemが走って、listnerが終了して、もう一度shutting down launched systemが走っている。
+終了ステータスは0になっている。
 
 ```bash
 hyt@dpc1909014-2204:~/ros_ws/awf$ cd $HOME/ros_ws/awf
