@@ -21,8 +21,8 @@ This section summarises what has been clarified in the subsequent verification a
 
 ### Conclusions
 
-1. even if multiple required nodes are created, the exit status ends with 0
-2. even if logging_simulator.launch.xml is included, if there is only one required node, the exit status ends with 0
+1. even if multiple required nodes are created, the exit status will be 0
+2. even if logging_simulator.launch.xml is included, if there is only one required node, the exit status will be 0
 
 ### Questions
 
@@ -59,9 +59,9 @@ First, judge whether the exit status of 1 when using multiple required nodes is 
 
 Use the [launch](./launch/multi_required.launch.py) file that loads the talker and listener of demo_node_py specified as required.
 
-After 10 publishes, it is finished.
-After the talker finishes, the SHUTTING DOWN LAUNCH SYSTEM runs, the LISTNER finishes and the SHUTTING DOWN LAUNCH SYSTEM runs again.
-The exit status is 0.
+After 10 publishes, the TALKER node shuts down.
+After the shutdown of the TALKER, a SHUTTING DOWN LAUNCHED SYSTEM is running, the LISTNER is terminated and a SHUTTING DOWN LAUNCHED SYSTEM is running again.
+The exit status is 0, as shown in the console log below.
 
 ```bash
 hyt@dpc1909014-2204:~/ros_ws/awf$ cd $HOME/ros_ws/awf
@@ -104,17 +104,17 @@ hyt@dpc1909014-2204:~/ros_ws/awf$ echo $?
 0
 ```
 
-よって、ROS 2の仕様上は、複数のrequired nodeを指定しても問題はない。(結論1)
+Therefore, according to the ROS 2 specification, there is no problem in specifying multiple required nodes. (Conclusion 1)
 
-### autowareのlaunchを使用する場合
+### When using autoware launch
 
-[driving_log_replayer](https://github.com/tier4/driving_log_replayer)で、required nodeが一つだけなら正常終了することがわかっている。
-複数個のreuqired nodeを設定した場合、異常になる原因が、[driving_log_replayer](https://github.com/tier4/driving_log_replayer)にあるノードの問題ではないことを確認するために、前述のtalkerとlistnerに入れ替えた場合でも起こることを確認する。
+It is known that [driving_log_replayer](https://github.com/tier4/driving_log_replayer) will terminate normally if there is only one reuqired node.
+To check that the anomaly is not caused by a problem with the node in driving_log_replayer when multiple reuqired nodes are set up, check that this also happens when the nodes are replaced with the aforementioned talker and listener.
+First create a launch that will result in a normal termination (0). Afterwards, it is shown that it changes to an abnormal end (1) by adding the reuqired node.
 
-まず正常終了(0)になるであろうlaunchを作って、reuqiredをつけることで、挙動が変わること示す。
-[single_required_with_aw.launch.py](./launch/single_required_with_aw.launch.py)を使用
+Use [single_required_with_aw.launch.py](./launch/single_required_with_aw.launch.py) to check.
 
-#### コンテナのload_nodeで警告が出て例外を吐く
+#### Container's load_node will raise a warning and throw an exception
 
 ```bash
 hyt@dpc1909014-2204:~/ros_ws/awf$ cd $HOME/ros_ws/awf
@@ -127,9 +127,9 @@ hyt@dpc1909014-2204:~/ros_ws/awf$ echo $?
 1
 ```
 
-何故か異常終了している。
-[ログ](./logs/single_required_with_aw.txt)を見ると、サービスのFutureでexceptionが出ている。
-includeせずに直接`ros2 launch autoware_launch logging_simulator.launch.xml map_path:=$HOME/map/sample sensor_model:=sample_sensor_kit vehicle_model:=sample_vehicle`した場合の[ログ](./logs/manually_launch_logging_simulator_launch.txt)を見ると、同じようにload_nodeの警告が出ているものの、Futureの例外は吐いていない（よくわからない）
+For some reason it is terminating abnormally.
+[The log](./logs/s/single_required_with_aw.txt) shows an exception in the Future of the service.
+When calling logging_simulator.launch.xml directly, [the log](./logs/manually_launch_logging_simulator_launch.txt) shows the same load_node warning, but no Future exception is thrown.
 
 ```shell
 [WARNING] [launch_ros.actions.load_composable_nodes]: Abandoning wait for the '/planning/scenario_planning/parking/parking_container/_container/load_node' service response, due to shutdown.
@@ -195,72 +195,75 @@ Traceback (most recent call last):
 rclpy._rclpy_pybind11.InvalidHandle: cannot use Destroyable because destruction was requested
 ```
 
-perceptionに関しては、onnxの変換のログが大量に出ているので、engineファイルが生成できてないことによる問題と認識して、engineが出力されるまでしばらく放置した。
-[ログ](./logs/generate_engine_file.txt.txt)を見る限り、engineの出力が完了したら、perceptionのload_nodeの警告はでなくなった。
-planningについては問題は解決しなかった。
+As for PERCEPTION, there was a lot of logging of the conversion of ONNX, so I recognised the problem as being due to the engine file not being generated, and left it for a while until the engine was output.
+[The log](./logs/generate_engine_file.txt.txt) shows that once the output of the engine was complete, the warning about the load_node in the perception stopped.
+The problem was not solved for PLANNING.
 
-logging_simulator.launch.pyを直接起動して、Ctrl+Cで止める分には終了ステータスは0だが、includeして、launch.actions.Shutdown()で終了させると、planningがexceptionを吐く(疑問1)
+The exit status is 0 for directly invoking logging_simulator.launch.py and stopping it with Ctrl+C.
+However, if I include it in another launch and terminate it with launch.actions.Shutdown(), planning throws an exception (question 1).
 
-#### planning offにして正常終了させる
+#### Planning off and terminate normally
 
-planning起動しているとエラー吐くのでモジュールを呼ばないことで回避する
+Avoid errors by not calling the planning module.
 
 ```bash
 hyt@dpc1909014-2204:~/ros_ws/awf$ ros2 launch launch_exit_status single_required_with_aw.launch.py map_path:=$HOME/map/sample vehicle_model:=sample_vehicle sensor_model:=sample_sensor_kit planning:=false
 ...
-長いので省略
-logs/single_required_with_aw_planning_off参照
+Omitted because of its length
+refer logs/single_required_with_aw_planning_off
 ...
 hyt@dpc1909014-2204:~/ros_ws/awf$ echo $?
 0
 ```
 
-planningがoffでreuqired nodeが1個なら正常終了になる(結論2)
+If planning is off and there is one reuqired node, it will end normally (Conclusion 2).
 
-#### reuqired nodeを複数にする
+#### make multiple reuqired node
 
-正常終了するsingle_required_with_aw.launch.pyのlistenerのon_exitのコメントを外してrequired nodeにしたlaunchを起動する
+Uncomment on_exit of listener in single_required_with_aw.launch.py that exits successfully and start launch with required node
 
 ```bash
 hyt@dpc1909014-2204:~/ros_ws/awf$ ros2 launch launch_exit_status multi_required_with_aw.launch.py map_path:=$HOME/map/sample vehicle_model:=sample_vehicle sensor_model:=sample_sensor_kit planning:=false
 ...
-長いので省略
-logs/multi_required_with_aw_planning_off参照
+Omitted because of its length
+refer logs/multi_required_with_aw_planning_off
 ...
 hyt@dpc1909014-2204:~/ros_ws/awf$ echo $?
 1
 ```
 
-違いは、reuqired nodeの数だけでstatusが1になる。
-autowareを抜いたmulti_required.launch.pyではstatus 0なので、やはりautowareのlaunchを入れるか入れないかで挙動が違う(疑問2)
+Just by setting the listener node to the required node, the status becomes 1.
+In multi_required.launch.py without autoware, the status is 0, so the behavior is still different depending on whether autoware launch is included or not (question 2).
 
-#### launch.LaunchDescriptionでlogging_simulator.launch.xmlのあとに渡す処理が呼ばれない
+#### The process passed after logging_simulator.launch.xml in launch.LaunchDescription is not called
 
-single_required_with_aw_not_working.launchを利用する。LaunchDescriptionの配列にlogging_simulator.launch.xmlをtalkerとlistenerよりも先に書くと、talkerとlistenerが呼ばれない。
+Use single_required_with_aw_not_working.launch.
+If logging_simulator.launch.xml is written in the LaunchDescription array before the talker and listener, the talker and listener are not called.
 
 ```shell
 hyt@dpc1909014-2204:~/ros_ws/awf$ ros2 launch launch_exit_status single_required_with_aw_not_working.launch.py map_path:=$HOME/map/sample vehicle_model:=sample_vehicle sensor_model:=sample_sensor_kit planning:=false rviz:=true
 ...
-本来はtalkerが10回publishされたら終わるが、talkerが呼ばれないのでずっと終わらない
+Originally, it ends when the talker has been PUBLISHED 10 times, but it doesn't end all the time because the talker is not called.
 ...
 ```
 
-diriving_log_replyaerの[launch](https://github.com/tier4/driving_log_replayer/blob/develop/driving_log_replayer/launch/perception.launch.py#L72-L75)では、ノードより先に渡しているが動作している。
+[The launch file in driving_log_replayer](https://github.com/tier4/driving_log_replayer/blob/develop/driving_log_replayer/launch/perception.launch.py#L72-L75) is working, although `logging_simulator.launch.xml` is passed before the node.
 
-driving_log_replyaerではautowareが用意しているrvizの起動をoffにして独自のrvizを出すようにしているので、rvizをoffにしてみたが変わらない。
+In driving_log_replyaer, the rviz provided by autoware is turned off to produce its own rviz, so I tried turning off rviz, but it did not change.
 
 ```shell
 hyt@dpc1909014-2204:~/ros_ws/awf$ ros2 launch launch_exit_status single_required_with_aw_not_working.launch.py map_path:=$HOME/map/sample vehicle_model:=sample_vehicle sensor_model:=sample_sensor_kit planning:=false rviz:=false
 ...
-rvizが起動されないだけでtalker,listenerが呼ばれないのは変わらない
+Just because rviz is not activated does not change the fact that talker,listener is not called.
 ...
 ```
 
-driving_log_replayerでは問題なく動作しているのに、このリポジトリではLaunchDescriptionの配列にlogging_simulator.launch.xmlをtalkerとlistenerよりも先に書くと、talkerとlistenerが呼ばれない。(疑問3)
+If I write logging_simulator.launch.xml in the LaunchDescription array before the talker and listener in this repository, even though it works fine in driving_log_replayer, the talker and listener are not called. (Question 3)
 
-#### logging_simulator.launch.xmlのargumentが伝搬する
+#### logging_simulator.launch.xml argument propagates
 
-groupでくくってもlogging_simulator.launch.xmlをincludeするとargが出てきてしまうlogging_simulator.launch.xmlの方でscoped=falseを指定したら上でどうやっても伝搬を防げない？(疑問4)
+If I include logging_simulator.launch.xml even if I wrap it in groups, I still get argument.
+If I specify scoped=false in the logging_simulator.launch.xml, how can I prevent propagation above? (Question 4)
 
 ```shell
 ~/ros_ws/awf main*
@@ -284,5 +287,5 @@ Arguments (pass arguments as '<name>:=<value>'):
         launch vehicle
         (default: 'true')
 ...
-長いので省略
+Omitted because of its length
 ```

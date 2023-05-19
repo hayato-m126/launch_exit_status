@@ -19,8 +19,8 @@ wasimでは、driving_log_replayerのlaunchの終了ステータスを取って�
 
 ### 結論
 
-1. required nodeを複数作っても終了ステータスは0で終わる
-2. logging_simulator.launch.xmlをincludeしてもrequired nodeが1個なら終了ステータス0で終わる
+1. required nodeを複数作っても終了ステータスは0になる
+2. logging_simulator.launch.xmlをincludeしてもrequired nodeが1個なら終了ステータス0になる
 
 ### 疑問
 
@@ -57,9 +57,9 @@ colcon build --symlink-install --catkin-skip-building-tests --cmake-args -DCMAKE
 
 demo_node_pyのtalkerとlistenerをrequired指定した[launch](./launch/multi_required.launch.py)を利用する。
 
-10回publishしたら終わる。
-talkerが終わったあとに、shutting down launched systemが走って、listnerが終了して、もう一度shutting down launched systemが走っている。
-終了ステータスは0になっている。
+10回publishしたらtalkerノードはシャットダウンする。
+talkerのシャットダウン後に、shutting down launched systemが走って、listnerが終了して、もう一度shutting down launched systemが走っている。
+終了ステータスは下記のコンソールのログのように0になっている。
 
 ```bash
 hyt@dpc1909014-2204:~/ros_ws/awf$ cd $HOME/ros_ws/awf
@@ -108,9 +108,9 @@ hyt@dpc1909014-2204:~/ros_ws/awf$ echo $?
 
 [driving_log_replayer](https://github.com/tier4/driving_log_replayer)で、required nodeが一つだけなら正常終了することがわかっている。
 複数個のreuqired nodeを設定した場合、異常になる原因が、[driving_log_replayer](https://github.com/tier4/driving_log_replayer)にあるノードの問題ではないことを確認するために、前述のtalkerとlistnerに入れ替えた場合でも起こることを確認する。
+まず正常終了(0)になるlaunchを作る。その後に、reuqired nodeを追加することで異常終了(1)に変わることを示す。
 
-まず正常終了(0)になるであろうlaunchを作って、reuqiredをつけることで、挙動が変わること示す。
-[single_required_with_aw.launch.py](./launch/single_required_with_aw.launch.py)を使用
+[single_required_with_aw.launch.py](./launch/single_required_with_aw.launch.py)を使用して確認していく。
 
 #### コンテナのload_nodeで警告が出て例外を吐く
 
@@ -127,7 +127,7 @@ hyt@dpc1909014-2204:~/ros_ws/awf$ echo $?
 
 何故か異常終了している。
 [ログ](./logs/single_required_with_aw.txt)を見ると、サービスのFutureでexceptionが出ている。
-includeせずに直接`ros2 launch autoware_launch logging_simulator.launch.xml map_path:=$HOME/map/sample sensor_model:=sample_sensor_kit vehicle_model:=sample_vehicle`した場合の[ログ](./logs/manually_launch_logging_simulator_launch.txt)を見ると、同じようにload_nodeの警告が出ているものの、Futureの例外は吐いていない（よくわからない）
+直接logging_simulator.launch.xmlを呼び出したときの[ログ](./logs/manually_launch_logging_simulator_launch.txt)を見ると、同じようにload_nodeの警告が出ているものの、Futureの例外は吐いていない。
 
 ```shell
 [WARNING] [launch_ros.actions.load_composable_nodes]: Abandoning wait for the '/planning/scenario_planning/parking/parking_container/_container/load_node' service response, due to shutdown.
@@ -197,11 +197,12 @@ perceptionに関しては、onnxの変換のログが大量に出ているので
 [ログ](./logs/generate_engine_file.txt.txt)を見る限り、engineの出力が完了したら、perceptionのload_nodeの警告はでなくなった。
 planningについては問題は解決しなかった。
 
-logging_simulator.launch.pyを直接起動して、Ctrl+Cで止める分には終了ステータスは0だが、includeして、launch.actions.Shutdown()で終了させると、planningがexceptionを吐く(疑問1)
+logging_simulator.launch.pyを直接起動して、Ctrl+Cで止める分には終了ステータスは0になる。
+しかし、別のlaunchにincludeして、launch.actions.Shutdown()で終了させると、planningがexceptionを吐く(疑問1)
 
 #### planning offにして正常終了させる
 
-planning起動しているとエラー吐くのでモジュールを呼ばないことで回避する
+planningモジュールを呼び出さないことでエラーを回避する
 
 ```bash
 hyt@dpc1909014-2204:~/ros_ws/awf$ ros2 launch launch_exit_status single_required_with_aw.launch.py map_path:=$HOME/map/sample vehicle_model:=sample_vehicle sensor_model:=sample_sensor_kit planning:=false
@@ -229,12 +230,13 @@ hyt@dpc1909014-2204:~/ros_ws/awf$ echo $?
 1
 ```
 
-違いは、reuqired nodeの数だけでstatusが1になる。
+listenerノードをreuquired nodeにしただけでstatusが1になる。
 autowareを抜いたmulti_required.launch.pyではstatus 0なので、やはりautowareのlaunchを入れるか入れないかで挙動が違う(疑問2)
 
 #### launch.LaunchDescriptionでlogging_simulator.launch.xmlのあとに渡す処理が呼ばれない
 
-single_required_with_aw_not_working.launchを利用する。LaunchDescriptionの配列にlogging_simulator.launch.xmlをtalkerとlistenerよりも先に書くと、talkerとlistenerが呼ばれない。
+single_required_with_aw_not_working.launchを利用する。
+LaunchDescriptionの配列にlogging_simulator.launch.xmlをtalkerとlistenerよりも先に書くと、talkerとlistenerが呼ばれない。
 
 ```shell
 hyt@dpc1909014-2204:~/ros_ws/awf$ ros2 launch launch_exit_status single_required_with_aw_not_working.launch.py map_path:=$HOME/map/sample vehicle_model:=sample_vehicle sensor_model:=sample_sensor_kit planning:=false rviz:=true
@@ -258,7 +260,8 @@ driving_log_replayerでは問題なく動作しているのに、このリポジ
 
 #### logging_simulator.launch.xmlのargumentが伝搬する
 
-groupでくくってもlogging_simulator.launch.xmlをincludeするとargが出てきてしまうlogging_simulator.launch.xmlの方でscoped=falseを指定したら上でどうやっても伝搬を防げない？(疑問4)
+groupでくくってもlogging_simulator.launch.xmlをincludeするとargが出てきてしまう。
+logging_simulator.launch.xmlの方でscoped=falseを指定したら上でどうやっても伝搬を防げない？(疑問4)
 
 ```shell
 ~/ros_ws/awf main*
