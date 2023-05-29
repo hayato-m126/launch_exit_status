@@ -15,6 +15,10 @@ So if the node has detected the end of the evaluation and proceeded to the launc
 
 Therefore, the purpose is to clarify whether the exit status becomes 1 due to a problem in the launch specification or whether it is an autoware-specific problem.
 
+## Solution
+
+The following questions remain, but for now, a workaround is to use [ShutdownOnce](https://github.com/tier4/scenario_simulator_v2/blob/ master/test_runner/scenario_test_runner/scenario_test_runner/shutdown_once.py), a modification of launch.actions.Shutdown.
+
 ## Conclusions and questions
 
 This section summarises what has been clarified in the subsequent verification and the questions that have been confirmed in the event

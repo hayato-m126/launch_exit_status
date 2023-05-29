@@ -13,6 +13,10 @@ wasimでは、driving_log_replayerのlaunchの終了ステータスを取って�
 
 なので、launchの仕様の問題で、終了ステータスが1になるのか、autoware固有の問題なのか明らかにすることを目的とする。
 
+## 解決方法
+
+以下の述べる疑問が残るが、とりあえずこの問題を回避する方法として、launch.actions.Shutdownを改造した[ShutdownOnce](https://github.com/tier4/scenario_simulator_v2/blob/master/test_runner/scenario_test_runner/scenario_test_runner/shutdown_once.py)を使用すればよい。
+
 ## 結論と疑問点
 
 以降の検証で明らかになったこと、事象としては確認出来たが、なぜそうなるのかわからない疑問点をまとめておく。
